@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_internet_show"
+    android:paddingLeft="10dp"
+    android:drawablePadding="10dp"
+    android:paddingRight="10dp"
+    android:visibility="gone"
+    android:drawableLeft="@drawable/em_msg_state_fail_resend"
+    android:gravity="center_vertical"
+    android:textColor="@color/color_212121"
+    android:text="@string/the_current_network"
+    android:background="@color/color_f8a899"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"/>
+

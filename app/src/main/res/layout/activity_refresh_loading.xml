@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/fun_title_back_bar"/>
+
+    <include layout="@layout/fun_no_net_show"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:text="还有更多消息"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:text="没有更多了"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </RadioGroup>
+
+    <com.ybao.pullrefreshview.layout.PullRefreshLayout
+        android:background="@color/refresh_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.ybao.pullrefreshview.simple.view.NormalHeaderView
+            android:id="@+id/pl_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_all"
+            android:background="@color/refresh_recycle_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.ybao.pullrefreshview.layout.PullRefreshLayout>
+
+</LinearLayout>

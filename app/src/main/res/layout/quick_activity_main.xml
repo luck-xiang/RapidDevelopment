@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:text="快速开发功能集合"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="@color/color_ffffff"
+        android:background="@color/color_f03e1b"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <com.ybao.pullrefreshview.layout.FlingLayout
+        android:background="@color/refresh_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_all"
+            android:background="@color/refresh_recycle_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.ybao.pullrefreshview.layout.FlingLayout>
+
+</LinearLayout>

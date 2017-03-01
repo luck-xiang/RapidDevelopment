@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:padding="15dp"
+            android:text="等待数据中……"
+            android:gravity="center"
+            android:textColor="@color/color_212121"
+            android:id="@+id/tv_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+
+            android:id="@+id/btn_1"
+            android:onClick="onClick"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="插入10000条数据第一种方法"
+            android:textColor="@color/text_color_f03e1b_ffffff"
+            android:background="@drawable/selector_sure_add"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+        <Button
+
+            android:layout_marginTop="10dp"
+            android:id="@+id/btn_2"
+            android:onClick="onClick"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="插入10000条数据第二种方法"
+            android:textColor="@color/text_color_f03e1b_ffffff"
+            android:background="@drawable/selector_sure_add"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+        <Button
+
+            android:layout_marginTop="10dp"
+            android:id="@+id/btn_3"
+            android:onClick="onClick"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="数据传输"
+            android:textColor="@color/text_color_f03e1b_ffffff"
+            android:background="@drawable/selector_sure_add"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

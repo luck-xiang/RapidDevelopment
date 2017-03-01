@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/color_f03e1b"
+              android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="5dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_calendar_year"
+            android:background="@drawable/shape_border"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@drawable/selector_sort_dot"
+            android:layout_height="match_parent"/>
+
+
+        <ImageButton
+            android:id="@+id/btn_last"
+            android:src="@drawable/selector_back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tv_calendar_month"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/shape_border"
+            android:drawableRight="@drawable/selector_sort_dot"
+            android:layout_height="match_parent"/>
+
+
+        <ImageButton
+            android:id="@+id/btn_next"
+            android:src="@drawable/selector_next"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_calender"
+        android:layout_margin="10dp"
+        android:layout_width="300dp"
+        android:layout_height="360dp"/>
+
+
+</LinearLayout>

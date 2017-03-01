@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RapidDevelopment</string>
+    <string name="Logoff_notification">下线通知</string>
+    <string name="ok">确定</string>
+    <string name="the_current_network">当前网络不可用，请检查网络设置并刷新</string>
+    <string name="notifyTitle">提示</string>
+    <string name="notifyMsg">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。</string>
+    <string name="notifyMsgRead">当前应用缺少手机读写储存权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限设置。</string>
+    <string name="setting">设置</string>
+    <string name="cancel">取消</string>
+</resources>

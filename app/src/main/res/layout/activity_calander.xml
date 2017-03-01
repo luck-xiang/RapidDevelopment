@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/fun_title_back_bar"/>
+
+    <include layout="@layout/fun_no_net_show"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_1"
+            android:text="年"
+            android:checked="true"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <CheckBox
+            android:id="@+id/cb_2"
+            android:text="月"
+            android:checked="true"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <CheckBox
+            android:id="@+id/cb_3"
+            android:text="日"
+            android:checked="true"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <CheckBox
+            android:id="@+id/cb_4"
+            android:text="时"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <CheckBox
+            android:id="@+id/cb_5"
+            android:text="分"
+            android:textColor="@color/text_color_f212121_f03e1b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_loop"
+        android:hint="日历选择后显示内容"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="40dp"
+        />
+
+    <Button
+        android:id="@+id/btn_1"
+        android:text="滚动日历"
+        android:onClick="onClick"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/text_color_f03e1b_ffffff"
+        android:layout_width="match_parent"
+        android:background="@drawable/selector_sure_add"
+        android:layout_height="40dp"
+       />
+
+    <TextView
+        android:id="@+id/tv_calendar"
+        android:gravity="center"
+        android:hint="日历选择后显示内容"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:id="@+id/btn_2"
+        android:onClick="onClick"
+        android:text="页面类型日历"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/text_color_f03e1b_ffffff"
+        android:layout_width="match_parent"
+        android:background="@drawable/selector_sure_add"
+        android:layout_height="40dp"/>
+
+
+</LinearLayout>

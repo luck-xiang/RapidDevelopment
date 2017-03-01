@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="refresh_color">#f8a899</color>
+    <color name="refresh_recycle_color">#ffffff</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_f03e1b">#f03e1b</color>
+    <color name="color_212121">#212121</color>
+    <color name="color_f8a899">#f8a899</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_no">#00000000</color>
+    <color name="color_dddddd">#dddddd</color>
+    <color name="refresh_dddddd">#dddddd</color>
+    <color name="color_b4b4b4">#b4b4b4</color>
+    <color name="color_969696">#969696</color>
+
+
+
+
+
+
+    <color name="activity_bg">#fff0eff4</color>
+    <color name="layout_bg">#f3f7f9</color>
+    <color name="layout_title_bg">#1C82DE</color>
+    <color name="layout_title_bg_1">#00CCFF</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="half_transparent">#cc666666</color>
+    <color name="transparent">#00000000</color>
+    <color name="left_itembg_pressed">#1a1a1a</color>
+    <color name="black">#ff000000</color>
+    <color name="black1">#ff222222</color>
+    <color name="white">#ffffffff</color>
+    <color name="mid_night_blue">#ff64a909</color>
+    <color name="background">#fff1f1f1</color>
+    <color name="gray">#ffd5dbdb</color>
+    <color name="lightgray">#d5d5d5</color>
+    <color name="red">#ffce0000</color>
+    <color name="dimgray">#ff696969</color>
+    <color name="blue">#ff24BFFD</color>
+    <color name="grayish">#878787</color>
+    <color name="blue_press">#ff0090DA</color>
+    <color name="shenlv">#ff489577</color>
+    <color name="yellow">#ffffc600</color>
+    <color name="yellow_press">#ffffa912</color>
+    <color name="unChecked">#ff999999</color>
+    <color name="unChecked1">#ff848d8c</color>
+    <!-- 今天的 -->
+    <color name="dark_bule">#1C82DE</color>
+    <color name="light_blue">#2891EF</color>
+    <color name="hight_bule">#59BBFF</color>
+    <!-- 番木色 -->
+    <color name="blanchedalmond">#FFEBCD</color>
+    <!-- 桃色 -->
+    <color name="gold">#FFD700</color>
+    <!-- 亮肉色 -->
+    <color name="darkorange">#FF8C00</color>
+    <!-- 暗桔黄色 -->
+    <color name="coral">#FF7F50</color>
+    <color name="color_hei_8">#00000000</color>
+    <color name="left_itembg_pressed_exit">#303030</color>
+    <!-- 暖黄色 -->
+    <color name="yellow_low">#fdfdc7</color>
+
+    <drawable name="trans">@color/color_hei_8</drawable>
+
+    <color name="software_textColor_selected">@color/green</color>
+    <color name="green">#59BBFF</color>
+    <color name="green_press">#61bedd</color>
+    <color name="textcolor">#888888</color>
+    <color name="lanse">#008def</color>
+    <color name="lanse_press">#0074c4</color>
+    <color name="qianlanse">#59bbff</color>
+    <color name="huise">#999999</color>
+    <color name="qianhuise">#cccccc</color>
+    <color name="chengse">#ffa200</color>
+    <color name="qianmeihong">#fa4672</color>
+    <color name="meihong">#fd6361</color>
+    <color name="qianlvse">#0ecd9e</color>
+    <color name="light_red">#FE749C</color>
+    <color name="dark_gray">#414141</color>
+    <color name="light_gray">#B3B3B3</color>
+    <color name="fense">#ff5565</color>
+    <color name="fonthuise">#99999999</color>
+    <color name="middle_gray">#7E7E7E</color>
+    <color name="trade_red">#FB819E</color>
+    <color name="trade_orange">#65D0B7</color>
+    <color name="all_background">#EFEFF4</color>
+
+
+
+
+</resources>

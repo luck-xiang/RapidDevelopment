@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    >
+
+    <include layout="@layout/fun_title_back_bar"/>
+
+    <TextView
+        android:text="设置最大选择项：（当为-1的时候为不定项选择）"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <EditText
+        android:id="@+id/et_number"
+        android:inputType="number"
+        android:text="-1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:id="@+id/btn_1"
+        android:onClick="onClick"
+        android:text="定项或者不定项选择"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/text_color_f03e1b_ffffff"
+        android:layout_width="match_parent"
+        android:background="@drawable/selector_sure_add"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/btn_2"
+        android:onClick="onClick"
+        android:text="单选框"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/text_color_f03e1b_ffffff"
+        android:layout_width="match_parent"
+        android:background="@drawable/selector_sure_add"
+        android:layout_height="40dp"/>
+
+</LinearLayout>
