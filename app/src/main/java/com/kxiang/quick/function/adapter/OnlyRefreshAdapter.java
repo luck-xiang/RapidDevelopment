@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kexiang.function.view.recycleview.BaseRecycleAdapter;
 import com.kxiang.quick.R;
 import com.kxiang.quick.bean.ClassBean;
-import com.kxiang.quick.function.view.rlv.BaseRecycleViewAdapter;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * 创建时间:2017/1/17 11:29
  */
 
-public class OnlyRefreshAdapter extends BaseRecycleViewAdapter<ClassBean> {
+public class OnlyRefreshAdapter extends BaseRecycleAdapter<ClassBean> {
 
     public OnlyRefreshAdapter(Context context, List<ClassBean> list) {
         super(context, list);

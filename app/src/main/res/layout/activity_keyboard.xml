@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_keyboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     >
 
-    <EditText
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:background="@color/color_no"
+        android:layout_height="240dp">
+
+        <com.kexiang.function.view.banner.BannersView
+            android:id="@+id/banners_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_title_bar"
+            android:layout_width="match_parent"
+            android:background="@color/color_no"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:id="@+id/iv_title_left"
+                android:layout_width="50dp"
+                android:padding="10dp"
+                android:src="@drawable/back_default"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_title_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:padding="10dp"
+                android:textColor="@color/color_ffffff"
+                />
+
+            <TextView
+                android:id="@+id/tv_title_name"
+                android:textSize="19sp"
+                android:gravity="center"
+                android:textColor="@color/color_ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+        </RelativeLayout>
+    </FrameLayout>
+
+
+    <com.kexiang.function.view.ClearEditText
+        android:background="@drawable/box_corners_fa4672_stroke"
+        android:padding="10dp"
+        android:layout_margin="20dp"
         android:id="@+id/et_number"
         android:layout_width="match_parent"
         android:textColor="@color/color_212121"
@@ -15,6 +64,11 @@
         android:gravity="center_horizontal"
         android:maxLength="11"
         android:inputType="numberDecimal"/>
+
+    <View
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
     <android.inputmethodservice.KeyboardView
         android:id="@+id/keyboardview"
@@ -31,4 +85,4 @@
         android:shadowRadius="0"
         />
 
-</RelativeLayout>
+</LinearLayout>

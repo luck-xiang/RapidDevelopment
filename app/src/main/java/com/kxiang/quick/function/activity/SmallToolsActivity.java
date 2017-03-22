@@ -11,16 +11,20 @@ import com.kxiang.quick.base.BaseActivity;
 
 public class SmallToolsActivity extends BaseActivity implements View.OnClickListener {
 
-    @Override
-    protected int getContentView() {
-        return R.layout.quick_activity_small_tools;
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.quick_activity_small_tools);
+        initStatusBarColor();
         initTitle();
         tv_title_name.setText("小工具集合");
+
+    }
+
+    @Override
+    protected void initView() {
 
     }
 

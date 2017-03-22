@@ -14,9 +14,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 
+import com.kexiang.function.utils.LogUtils;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
-import com.kxiang.quick.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

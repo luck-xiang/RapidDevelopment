@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_dbtest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/fun_title_back_bar"/>
+
+        <Button
+            android:id="@+id/btn_1"
+            android:text="黑名单插入"
+            android:textColor="@color/text_color_b4b4b4_ffffff"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_rect_f8a899_fa4672"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_number"
+                android:inputType="number"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                />
+
+            <Button
+                android:id="@+id/btn_2"
+                android:text="黑名删除一个"
+                android:textColor="@color/text_color_b4b4b4_ffffff"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_rect_f8a899_fa4672"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_3"
+            android:text="黑名删除所以数据"
+            android:textColor="@color/text_color_b4b4b4_ffffff"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_rect_f8a899_fa4672"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_number1"
+                android:inputType="number"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                />
+
+            <Button
+                android:id="@+id/btn_4"
+                android:text="黑名删除一个"
+                android:textColor="@color/text_color_b4b4b4_ffffff"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_rect_f8a899_fa4672"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

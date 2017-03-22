@@ -1,9 +1,10 @@
 package com.kxiang.quick.db;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
-import com.kxiang.quick.utils.LogUtils;
+import com.kexiang.function.utils.LogUtils;
 
 import java.util.List;
 
@@ -25,15 +26,21 @@ public class DaoTest extends TableImp {
      * 快速插入数据，这个方法是insert(String[] data)一条一条插入数据库的快好几倍
      * 全部插入成功返回true，否则false
      */
-    public boolean insert(List<TestBean> data) {
+    public boolean insertAndroid(List<TestBean> data, String name) {
 
         boolean saveSuccee = false;
-        LogUtils.toE("sql", "insert:" + DaoTest.Sql.insertALL);
+//        LogUtils.toE("sql", "insert:" + DaoTest.Sql.insertALL);
+
         //开启事务
         getDatabase().beginTransaction();
         try {
             SQLiteStatement stmt = getDatabase().compileStatement(DaoTest.Sql.insertALL);
             for (int i = 0; i < data.size(); i++) {
+
+                if (i == 10) {
+                    Thread.sleep(2000);
+                }
+                LogUtils.toE("sql", "insert:" + name);
                 stmt.bindString(1, data.get(i).getName());
                 stmt.bindString(2, data.get(i).getSex());
                 stmt.bindString(3, data.get(i).getId_DB() + "");
@@ -57,7 +64,7 @@ public class DaoTest extends TableImp {
         return saveSuccee;
     }
 
-    public void insert(String[] data) {
+    public void insertAndroid(String[] data) {
         LogUtils.toE("sql", "insert:" + DaoTest.Sql.insertALL);
         getDatabase().execSQL(DaoTest.Sql.insertALL, data);
     }
@@ -71,21 +78,63 @@ public class DaoTest extends TableImp {
     /**
      * 删除
      */
-    public void delete() {
-
+    public void deleteAndroid() {
+        //
+        getDatabase().delete(Sql.TABLE_NAME, null, null);
     }
 
     /**
      * 修改
      */
-    public void updata() {
+    public void updataAndroid() {
 
     }
+
+    public void upDate(String uploading_status, String trade_id, String name) {
+        LogUtils.toE("sql", "insert:" + name);
+        //开启事务
+        getDatabase().beginTransaction();
+        try {
+            getDatabase().execSQL("update testTable set name = ? " +
+                            " where id_DB = ?",
+                    new String[]{
+                            uploading_status,
+                            trade_id
+                    }
+            );
+            //事务完成
+            getDatabase().setTransactionSuccessful();
+
+        } catch (Exception e) {
+
+        } finally {
+            //提交事务
+            getDatabase().endTransaction();
+        }
+
+    }
+
 
     /**
      * 查询
      */
-    public void seletct() {
+    public void seletct(int id) {
+
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("select * from ");
+        buffer.append(Sql.TABLE_NAME);
+        buffer.append(" where id_DB = ");
+        buffer.append(id);
+        String sql = buffer.toString();
+        Cursor cursor = getDatabase().rawQuery(sql, null);
+
+        while (cursor.moveToNext()) {
+            int id_DB = cursor.getInt(cursor.
+                    getColumnIndex("id_DB"));
+            LogUtils.toE(id_DB);
+        }
+
+        cursor.close();
 
     }
 
@@ -93,20 +142,20 @@ public class DaoTest extends TableImp {
      * 将所有Sql语句提到一个类中，方便管理
      */
     public static class Sql {
-        public static String NAME = "testTable";
+        public static String TABLE_NAME = "testTable";
         /**
          * 创建表
          */
-        public static final String CREATE_TestTable =
+        public static final String CREATE_TABLE =
                 "create table " +
-                        NAME +
+                        TABLE_NAME +
                         "(id integer primary key autoincrement not null," +
                         " name text not null," +
                         " sex text not null," +
                         " id_DB integer not null)";
 
-        private static final String insertALL = "insert into " +
-                NAME +
+        public static final String insertALL = "insert into " +
+                TABLE_NAME +
                 " (name,sex,id_DB)" +
                 " values(?,?,?)";
     }

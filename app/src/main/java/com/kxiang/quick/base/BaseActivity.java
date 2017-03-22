@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -16,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kexiang.function.utils.LogUtils;
+import com.kexiang.function.view.SystemBarTintSet;
 import com.kxiang.quick.MainActivity;
 import com.kxiang.quick.R;
-import com.kxiang.quick.function.view.utils.SystemBarTintSet;
-import com.kxiang.quick.utils.LogUtils;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -37,6 +35,7 @@ public abstract class BaseActivity extends FragmentActivity {
      */
     protected BaseActivity thisActivity;
     protected CompositeDisposable disposable;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,11 +49,9 @@ public abstract class BaseActivity extends FragmentActivity {
         }
         disposable = new CompositeDisposable();
         thisActivity = this;
-        initStatusBar();
-        setContentView(getContentView());
         //打印当前继承BaseActivity的界面activity
         LogUtils.toE("BaseActivity", getClass().getSimpleName() + "");
-       // bandService();
+        // bandService();
     }
 
 
@@ -62,8 +59,15 @@ public abstract class BaseActivity extends FragmentActivity {
      * 如果不需要设置头部颜色或者需要改变头部颜色修改该函数
      * 填上SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
      */
-    protected void initStatusBar() {
+    protected void initStatusBarColor() {
         SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
+    }
+
+    /**
+     * 修改头部颜色
+     */
+    protected void initStatusBarColor(int color) {
+        SystemBarTintSet.setStatusBarKITKATabove(this, color);
     }
 
 
@@ -83,7 +87,6 @@ public abstract class BaseActivity extends FragmentActivity {
                     leftFinish();
                 }
             });
-
     }
 
     /**
@@ -93,15 +96,9 @@ public abstract class BaseActivity extends FragmentActivity {
         finish();
     }
 
-    /**
-     * 返回对应Activity的布局文件的id
-     *
-     * @return
-     */
-    protected abstract int getContentView();
-
     protected AlertDialog.Builder exceptionBuilder;
 
+    protected abstract void initView();
 
     //强制退出登录显示框
     public void showExceptionDialog(String exceptionType) {
@@ -140,22 +137,6 @@ public abstract class BaseActivity extends FragmentActivity {
         if (isOpen) {
             imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
         }
-    }
-
-
-    /**
-     * 网络是否开启图示UI
-     * 有网时候返回true
-     * 没有网络返回false
-     */
-    protected boolean changInternew() {
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) BaseActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isAvailable()) {
-            return true;
-        }
-        return false;
     }
 
 

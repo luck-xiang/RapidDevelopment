@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RapidDevelopment</string>
+    <string name="app_name">快速开发</string>
     <string name="Logoff_notification">下线通知</string>
     <string name="ok">确定</string>
     <string name="the_current_network">当前网络不可用，请检查网络设置并刷新</string>

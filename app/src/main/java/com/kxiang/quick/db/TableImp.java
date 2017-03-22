@@ -15,7 +15,7 @@ public class TableImp implements TableInterface {
     private SQLiteDatabase database;
 
     protected TableImp(Context context) {
-        database = SQLdbhHelper.getInstance(context);
+        database = DBHelper.getInstance(context);
     }
 
     /**
@@ -24,6 +24,7 @@ public class TableImp implements TableInterface {
      */
     @Override
     public SQLiteDatabase getDatabase() {
+
         return database;
     }
 }

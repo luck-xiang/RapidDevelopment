@@ -3,9 +3,9 @@ package com.kxiang.quick.function.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.kexiang.function.utils.LogUtils;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
-import com.kxiang.quick.utils.LogUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -23,10 +23,16 @@ public class MemoryActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_memory);
 //        MyThread myThread=  new MyThread();
 //        myThread.start();
         tv_show = (TextView) findViewById(R.id.tv_show);
         netWork();
+
+    }
+
+    @Override
+    protected void initView() {
 
     }
 
@@ -103,10 +109,7 @@ public class MemoryActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_memory;
-    }
+
 
 
 }

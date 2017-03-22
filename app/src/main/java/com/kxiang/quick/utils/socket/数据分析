@@ -1,0 +1,348 @@
+new Thread(new  Runnable() {
+				public void run() {
+					//AA0009000000000000B3 TCP包协议版本(AA)+TCP包头(B3 = AA+09)+数据包协议版本(AA)
+					//AA06000F004511657A   06(终端数据报文头长度)+00(中继子网ID)+0F(时间校准)+0001(终端号)+11(联网)
+					String cmd = "AA0027000000000000D1AA" //数据包协议版本字节至数据包尾。   //36+(aa+24+最后个校验)
+							+ "24" //10进制为36  数据长度(中继子网ID--->+命令数据长度)  4(00-0001)+31+1(内容校验和)
+							+ "00" //中继子网ID
+							+ "0B" //协议标示
+							+ "0001" //终端号
+							+ "221122" //状态+固件版本+流水状态
+							+clientMac[0]
+							+clientMac[1]
+							+clientMac[2]
+							+clientMac[3]
+							+clientMac[4]
+							+clientMac[5]
+							+Integer.toHexString(serverport)+Integer.toHexString(Integer.parseInt(ips[0]))
+							+Integer.toHexString(Integer.parseInt(ips[1]))
+							+Integer.toHexString(Integer.parseInt(ips[2]))
+							+Integer.toHexString(Integer.parseInt(ips[3]))
+							+Integer.toHexString(Integer.parseInt(clientMask[0]))
+							+Integer.toHexString(Integer.parseInt(clientMask[1]))
+							+Integer.toHexString(Integer.parseInt(clientMask[2]))
+							+Integer.toHexString(Integer.parseInt(clientMask[3]))
+							+Integer.toHexString(Integer.parseInt(clientGetway[0]))
+							+Integer.toHexString(Integer.parseInt(clientGetway[1]))
+							+Integer.toHexString(Integer.parseInt(clientGetway[2]))
+							+Integer.toHexString(Integer.parseInt(clientGetway[3]))
+							+Integer.toHexString(Integer.parseInt(serverips[0]))
+							+Integer.toHexString(Integer.parseInt(serverips[1]))
+							+Integer.toHexString(Integer.parseInt(serverips[2]))
+							+Integer.toHexString(Integer.parseInt(serverips[3]))
+							+"00000000"//4位随机数
+							+"00" //内容校验和
+							+"00"; //命令数据累加和校验
+					Log.i("cmd", cmd);
+					
+					Log.i("hei", HEX.HeiStringAdd("000B0045221122BCAEC561BC00A211C0A802E3FFFFFF00C0A80201C0A802E300000000")); //a6 从中继子网ID至命令数据的累加和校验最低字节
+					Log.i("hei", HEX.HeiStringAdd("AA24000B0045221122BCAEC561BC00A211C0A802E3FFFFFF00C0A80201C0A802E300000000A6")); //1a AA->校验值
+					
+					ConnectionManager.send("AA0027000000000000D1AA24000B0045221122BCAEC561BC00A211C0A802E3FFFFFF00C0A80201C0A802E300000000A61A"); //终端状态查询
+				}
+			}).start();
+			
+			
+			
+			
+			
+	private void sendBill()
+	{
+		
+		//计算余额字符串
+		String blanace_money = Integer.toHexString((paymentBeforeMoney-5)*100);
+		int blanace_len = blanace_money.length();
+		for(int i=0;i<6-blanace_len;i++)
+		{
+			blanace_money = "0" + blanace_money;
+		}
+		Log.i("blanace_money", blanace_money);
+		
+		//交易金额
+		String trade_moeny = Integer.toHexString(5*100);
+		int trade_len = trade_moeny.length();
+		for(int i=0;i<6-trade_len;i++)
+		{
+			trade_moeny = "0" + trade_moeny;
+		}
+		Log.i("trade_moeny", trade_moeny);
+		
+		//终端交易序号
+		String deviceTradeId = Integer.toHexString(mDeviceTradeId+1);
+		int deviceTrade_len = deviceTradeId.length();
+		for(int i=0;i<6-deviceTrade_len;i++)
+		{
+			deviceTradeId = "0" + deviceTradeId;
+		}
+		Log.i("mDeviceTradeId", deviceTradeId);
+		
+		//传输序号
+		String tradeid = Integer.toHexString(mTradeId+1);
+		int tradeid_len = tradeid.length();
+		for(int i=0;i<4-tradeid_len;i++)
+		{
+			tradeid = "0" + tradeid;
+		}
+		Log.i("tradeid", tradeid);
+		Log.i("mCardId",mCardId);
+		Log.i("subsibyBean.money.substring(2)", subsibyBean.money.substring(2));
+		Log.i("subsibyBean.seq.substring(2)", subsibyBean.seq.substring(2));
+		Log.i("deviceTradeId", deviceTradeId);
+		Log.i("cashTradeSeq", cashTradeSeq);
+		
+		
+		cashTradeSeq = Integer.toHexString((Integer.parseInt(cashTradeSeq, 16)+1)); //现金交易序号+1
+		int cashTradeSeqlen = cashTradeSeq.length();
+		for(int i=0;i<4-cashTradeSeqlen;i++)
+		{
+			cashTradeSeq = "0"+cashTradeSeq;
+		}
+		Log.i("cashTradeSeq 后", cashTradeSeq);
+		//现金FTIME
+		Date date = new Date();
+		Log.i("time", dateFormatsocket.format(date));
+		String order="7D";
+		String orderContent="01"//消费
+				+dateFormatsocket.format(date)//时间
+				+mCardId //卡号
+				+blanace_money //交易后的余额
+				+trade_moeny //交易金额
+				+cashTradeSeq//现金消费交易序号
+				+subsibyBean.money.substring(2)
+				+"000000" //补助交易额
+				+subsibyBean.seq.substring(2)
+				+deviceTradeId//终端交易序号
+				+tradeid //传输序号
+				;
+		String lcr = HEX.HeiStringAdd(orderContent); //计算LCR
+		orderContent +=lcr;
+		String deviceId="0001";
+		Log.i("orderContent", orderContent);
+		SendClass thread = new SendClass(order,orderContent,deviceId,false,LoginActivity.connectionManager);
+		thread.start();
+	}
+	
+	
+	
+	private void sendBill()
+	{
+		//计算余额字符串
+		String blanace_money = Integer.toHexString((paymentBeforeMoney-5)*100);
+		int blanace_len = blanace_money.length();
+		for(int i=0;i<6-blanace_len;i++)
+		{
+			blanace_money = "0" + blanace_money;
+		}
+		Log.i("blanace_money", blanace_money);
+		
+		//交易金额
+		String trade_moeny = Integer.toHexString(5*100);
+		int trade_len = trade_moeny.length();
+		for(int i=0;i<6-trade_len;i++)
+		{
+			trade_moeny = "0" + trade_moeny;
+		}
+		Log.i("trade_moeny", trade_moeny);
+		
+		//终端交易序号
+		String deviceTradeId = Integer.toHexString(mDeviceTradeId+1);
+		int deviceTrade_len = deviceTradeId.length();
+		for(int i=0;i<6-deviceTrade_len;i++)
+		{
+			deviceTradeId = "0" + deviceTradeId;
+		}
+		Log.i("mDeviceTradeId", deviceTradeId);
+		
+		//传输序号
+		String tradeid = Integer.toHexString(mTradeId+1);
+		int tradeid_len = tradeid.length();
+		for(int i=0;i<4-tradeid_len;i++)
+		{
+			tradeid = "0" + tradeid;
+		}
+		Log.i("tradeid", tradeid);
+		Log.i("mCardId",mCardId);
+		Log.i("subsibyBean.money.substring(2)", subsibyBean.money.substring(2));
+		Log.i("subsibyBean.seq.substring(2)", subsibyBean.seq.substring(2));
+		Log.i("deviceTradeId", deviceTradeId);
+		Log.i("cashTradeSeq", cashTradeSeq);
+		
+		
+		cashTradeSeq = Integer.toHexString((Integer.parseInt(cashTradeSeq, 16)+1)); //现金交易序号+1
+		int cashTradeSeqlen = cashTradeSeq.length();
+		for(int i=0;i<4-cashTradeSeqlen;i++)
+		{
+			cashTradeSeq = "0"+cashTradeSeq;
+		}
+		Log.i("cashTradeSeq 后", cashTradeSeq);
+		//现金FTIME
+		Date date = new Date();
+		Log.i("time", dateFormatsocket.format(date));
+		
+		
+		String order="7D";
+		String orderContent="01"//消费
+				+"2016080000"//时间5位数
+				+mCardId //卡号
+				+blanace_money //交易后的余额
+				+trade_moeny //交易金额
+				+cashTradeSeq//脱机FTIME
+				+"0000" //联机FTIME
+				+"000000" //控制字节3位0
+				+"000000" //保留字节3位0
+				+deviceTradeId;//终端交易序号  +"00" //CRC(前28个字节CRC)  +tradeid //传输序号
+		
+		byte[] crc = new byte[1];
+		crc[0] = CRC8.calcCrc8(HEX.hexToBytes(orderContent));
+		String crc8 = HEX.bytesToHex(crc);
+		orderContent +=crc8+tradeid;
+		
+		
+		String lcr = HEX.HeiStringAdd(orderContent); //计算LCR
+		orderContent +=lcr; //最后步和效验
+		String deviceId="0024";
+		Log.i("orderContent", orderContent);
+		SendClass thread = new SendClass(order,orderContent,deviceId,false,LoginActivity.connectionManager);
+		thread.start();
+	}
+	
+	
+	134
+	21
+	
+	
+	
+	//					//获取一卡通补助钱包数据
+//					subsibyBean = cpuManager.getSubsidy(HyActivity.this, cpuNa);
+//					if(subsibyBean.money == null)
+//					{
+//						loadingDialog.dismiss();
+//						setCpuDialog("刷卡过快,重新刷卡!",false);
+//						return;
+//					}
+//					Log.i("money", subsibyBean.money);
+//					Log.i("seq", subsibyBean.seq);
+	
+    android:clickable="true"
+    android:background="@drawable/content_grid_style"
+
+
+//几次卡
+//原来数据  64000000 9BFFFFFF 000100000000000000000000000000000000000000000091
+78000000 87FFFFFF 0001 000000 00 00 00 00 0000000000000000000000000000 EC
+//写入
+78000000 87FFFFFF 0002 160918 00 01 00 00 0000000000000000000000000000 EC
+
+//老数据
+7800000087FFFFFF0001000000000000000000000000000000000000000000EC
+
+//            String cpu_send = send;
+//            send = random+send+"8000000000000000";
+//            Log.i("len",""+send.length()/2);
+//            int mac_len = (send.length()/2%8>0) ?(send.length()/2/8+1):(send.length()/2/8);
+//            Log.i("mac_len",""+mac_len);
+//            for(int i=0;i<mac_len;i++)
+//            {
+//                if(i==0) { //第一块
+//                    res = "80FA070008"  + send.substring(i*8*2,(i+1)*8*2);
+//                    Log.i("res",res);
+//                    psamManager.doCommand(HEX.hexToBytes(res));
+//                }
+//                else if(i!=0 && i!=mac_len-1) //下一块
+//                {
+//                    res = "80FA030008"  + send.substring(i*8*2,(i+1)*8*2);
+//                    Log.i("res",res);
+//                    psamManager.doCommand(HEX.hexToBytes(res));
+//                }
+//                else //最后块
+//                {
+//                    res = "80FA010008" + send.substring(i*8*2,send.length());
+//                    Log.i("res",res);
+//                    samResult = psamManager.doCommand(HEX.hexToBytes(res));
+//                    if (samResult != null) {
+//                        ramdom = samResult.getData();
+//                        data = HEX.bytesToHex(ramdom);
+//                    } else {
+//                        return null;
+//                    }
+//                    Log.i("mac_last", data);
+//                    mac = data;
+//                }
+//            }
+//            if(mac == null) //pasm没获取到mac
+//            {
+//                return null;
+//            }
+ if not CPUApdu('0084000004', FTmpResult) then Exit;
+  FTmpRandom:= FTmpResult + '00000000';
+
+  SF:= Copy(FCardSerialID, 3, 14) + GKeyVar;
+  if not PSAMReset(iLen, FTmpResult) then
+  begin
+    FErrorCode:= ecPSAMCommandErr;
+    FErrorMsg:= 'PSAM卡复位失败';
+    Exit;
+  end;
+  FApdu:= Format('801A260108%s', [SF]);
+  if not PSAMApdu(FApdu, FTmpResult) then
+  begin
+    FErrorCode:= ecPSAMCommandErr;
+    FErrorMsg:= 'PSAM卡初始化加密失败';
+    Exit;
+  end;
+  iMod:= Length(FTmpData) mod 16;
+  if iMod=0 then
+  begin
+    FTmpData:= FTmpData+SFillStr;
+  end
+  else begin
+    FTmpData:= FTmpData+ Copy( SFillStr, 1,  16-iMod);
+  end;
+  iLen:= Round(Length(FTmpRandom + FTmpData)/2);
+
+  iDiv:= iLen div $40;
+  iMod:= iLen mod $40;
+  if iMod=0 then Inc(iDiv, -1);
+  iPos:= 1;
+  for I := 0 to iDiv do
+  begin
+    FP1:= GetP1(iDiv, I);
+
+    case FP1 of
+      05: iTmpLen:= iLen;
+      01: iTmpLen:= iMod;
+    else
+      iTmpLen:= $40;
+    end;
+    FTmpStr:= Copy(FTmpRandom+FTmpData, iPos, iTmpLen*2);
+    FApdu:= Format('80FA%s00%s%s', [IntToHex(FP1,2), IntToHex(iTmpLen,2), FTmpStr]);
+    if not PSAMApdu(FApdu, FTmpResult) then
+    begin
+      FErrorCode:= ecPSAMCommandErr;
+      FErrorMsg:= 'PSAM卡验证失败';
+      Exit;
+    end;
+    iPos:= iPos+ iTmpLen*2;
+  end;
+  FTmpMac:= Copy(FTmpResult, 1, 8);
+
+  FApdu:= FTmpMacData + FTmpMac;
+  if not CPUApdu(FApdu, FTmpResult) then
+  begin
+    FErrorCode:= ecCPUCommandErr;
+    FErrorMsg:= '写二进制文件失败';
+    Exit;
+  end;
+口次钱包
+80FA050030204E9BB90000000004D69000247700000088ffffff00021609190000000000000000000000000000000000008F800000
+补助钱包
+80FA050030FCA0C9C20000000004D6990024000000002016091800000000000063000001ffffff9c000000000000000000A8800000
+  //补助钱包格式
+  00000000 20160918 000000 00000064 000000 FFFFFF9B 000000000000000000 11
+  补助版本号  补助到期日期 补助充值次数 余额 补助消费次数 余额反码 保留 CRC校验
+
+
+  小钱包
+00000000 000000 000000 FFFFFFFF 00000000 FFFFFFFF 000000000000000000 42
+//余额 小钱包消费次数 小钱包充值次数 余额反码 脱机余额  脱机余额反码  保留  8位CRC校验值
+

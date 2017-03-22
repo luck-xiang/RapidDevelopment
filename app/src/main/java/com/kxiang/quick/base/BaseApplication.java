@@ -15,17 +15,17 @@ package com.kxiang.quick.base;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
 
 import com.google.gson.Gson;
+import com.kexiang.function.utils.AppException;
+import com.kexiang.function.utils.LogUtils;
+import com.kexiang.function.utils.MD5Util;
+import com.kexiang.function.utils.SharedPreferencesUtil;
 import com.kxiang.quick.bean.LoginBack;
 import com.kxiang.quick.net.ApiNetworkAddressService;
 import com.kxiang.quick.net.JsonBeanFactory;
-import com.kxiang.quick.utils.AppException;
-import com.kxiang.quick.utils.LogUtils;
-import com.kxiang.quick.utils.MD5Util;
 import com.kxiang.quick.utils.SharedFieds;
-import com.kxiang.quick.utils.SharedPreferencesUtil;
+
 
 
 public class BaseApplication extends Application {
@@ -33,7 +33,7 @@ public class BaseApplication extends Application {
     protected ApiNetworkAddressService apiNetService;
     @Override
     public void onCreate() {
-        MultiDex.install(this);
+//        MultiDex.install(this);
         LogUtils.initDebug(true);
         super.onCreate();
         instance = this;
@@ -99,7 +99,7 @@ public class BaseApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(this);
+//        MultiDex.install(this);
     }
 
 

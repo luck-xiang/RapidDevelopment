@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.kexiang.function.view.OnDialogBackListener;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
-import com.kxiang.quick.function.view.OnDialogBackListener;
 import com.kxiang.quick.function.view.check.CheckBean;
 import com.kxiang.quick.function.view.check.DialogCheck;
 
@@ -15,10 +15,6 @@ import java.util.List;
 
 public class RadioCheckActivity extends BaseActivity implements View.OnClickListener {
 
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_radio_check;
-    }
 
     private TextView et_number;
     private List<String> checkList;
@@ -26,6 +22,8 @@ public class RadioCheckActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_radio_check);
+        initStatusBarColor();
         initTitle();
         tv_title_name.setText("单选,多选,定项选择");
         et_number = (TextView) findViewById(R.id.et_number);
@@ -33,6 +31,11 @@ public class RadioCheckActivity extends BaseActivity implements View.OnClickList
         for (int i = 0; i < 100; i++) {
             checkList.add("数据：" + i);
         }
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     /**
@@ -51,6 +54,7 @@ public class RadioCheckActivity extends BaseActivity implements View.OnClickList
                 selectLimit = Integer.parseInt(et_number.getText().toString());
                 DialogCheck dialogCheck = DialogCheck.newInstance(getCheckBean(checkList), "店铺选择", selectLimit, selectLimitChange);
                 dialogCheck.show(getSupportFragmentManager(), "check");
+
                 dialogCheck.setOnDialogBackListener(new OnDialogBackListener<
                         List<CheckBean.CheckItemBean>>() {
                     @Override

@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kexiang.function.view.recycleview.BaseRecycleAdapter;
 import com.kxiang.quick.R;
-import com.kxiang.quick.function.view.rlv.BaseRecycleViewAdapter;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
  * 创建时间:2016/11/3 17:02
  */
 
-public class DialogCheckAdapter<T> extends BaseRecycleViewAdapter {
+public class DialogCheckAdapter<T> extends BaseRecycleAdapter {
 
 
     /**

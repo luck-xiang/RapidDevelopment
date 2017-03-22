@@ -44,7 +44,7 @@
             android:text="取消"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:background="@drawable/selector_b4b4b4_fe103b"
+            android:background="@drawable/btn_b4b4b4_fe103b"
             android:textColor="@color/text_color_b4b4b4_ffffff"
             android:layout_height="match_parent"/>
 
@@ -57,7 +57,7 @@
             android:id="@+id/tv_dialog_sure"
             android:gravity="center"
             android:text="确定"
-            android:background="@drawable/selector_b4b4b4_fe103b"
+            android:background="@drawable/btn_b4b4b4_fe103b"
             android:textColor="@color/text_color_b4b4b4_ffffff"
             android:layout_weight="1"
             android:layout_width="0dp"

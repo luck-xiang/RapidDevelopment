@@ -1,1 +1,1 @@
-include ':app', ':PullRefresh'
+include ':app', ':PullRefresh', ':Function'

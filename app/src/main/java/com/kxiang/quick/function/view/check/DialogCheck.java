@@ -15,9 +15,9 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.kexiang.function.utils.ScreenUtils;
+import com.kexiang.function.view.OnDialogBackListener;
 import com.kxiang.quick.R;
-import com.kxiang.quick.function.view.OnDialogBackListener;
-import com.kxiang.quick.utils.ScreenUtils;
 
 import java.util.ArrayList;
 import java.util.List;

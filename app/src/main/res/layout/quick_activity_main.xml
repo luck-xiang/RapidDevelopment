@@ -3,18 +3,39 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
     >
 
-    <TextView
-        android:text="快速开发功能集合"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="@color/color_ffffff"
-        android:background="@color/color_f03e1b"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:background="@color/color_no"
+        android:layout_height="200dp">
+
+        <com.kexiang.function.view.banner.BannersView
+            android:id="@+id/banners_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_title_bar"
+            android:layout_width="match_parent"
+            android:background="@color/color_no"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="快速开发功能集合"
+                android:id="@+id/tv_title_name"
+                android:textSize="19sp"
+                android:gravity="center"
+                android:textColor="@color/color_ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+        </RelativeLayout>
+    </FrameLayout>
+
 
     <com.ybao.pullrefreshview.layout.FlingLayout
         android:background="@color/refresh_color"
