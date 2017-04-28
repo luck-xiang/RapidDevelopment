@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dl_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_81ccff"
+    android:fitsSystemWindows="true"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <fragment
+        android:name="com.kxiang.quick.news.fragment.UserDefinedFragment"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:tag="LEFT"
+        tools:layout="@layout/fragment_user_defined"/>
+
+</android.support.v4.widget.DrawerLayout>

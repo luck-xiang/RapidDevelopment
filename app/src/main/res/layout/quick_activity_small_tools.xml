@@ -23,10 +23,31 @@
                 android:onClick="onClick"
                 android:text="当前网络是否为wifi"
                 android:layout_margin="20dp"
-                android:textColor="@color/text_color_f03e1b_ffffff"
                 android:layout_width="match_parent"
-                android:background="@drawable/selector_sure_add"
+                android:textColor="@color/text_f03e1b_ffffff"
+                android:background="@drawable/btn_sure_add"
                 android:layout_height="40dp"/>
+
+            <Button
+                android:id="@+id/btn_2"
+                android:onClick="onClick"
+                android:text="自动更新界面"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/text_f03e1b_ffffff"
+                android:background="@drawable/btn_sure_add"
+                android:layout_height="40dp"/>
+            <Button
+                android:id="@+id/btn_3"
+                android:onClick="onClick"
+                android:text="DownloadManager"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:textColor="@color/text_f03e1b_ffffff"
+                android:background="@drawable/btn_sure_add"
+                android:layout_height="40dp"/>
+
+
         </LinearLayout>
     </LinearLayout>
 

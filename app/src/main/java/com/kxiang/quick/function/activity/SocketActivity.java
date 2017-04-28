@@ -20,6 +20,7 @@ public class SocketActivity extends BaseActivity {
         setContentView(R.layout.activity_socket);
         initStatusBarColor();
         initTitle();
+
         initView();
 
     }

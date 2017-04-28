@@ -65,7 +65,7 @@ public class SQLiteActivity extends BaseActivity implements View.OnClickListener
             testBeen1.add(bean1);
         }
         tv_show = (TextView) findViewById(R.id.tv_show);
-        initView();
+
 
     }
 
@@ -88,7 +88,21 @@ public class SQLiteActivity extends BaseActivity implements View.OnClickListener
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        testTable.insertAndroid(testBeen, "线程1");
+                        testTable.getDatabase().beginTransaction();
+                        testTable.insertAndroid( new String[]{
+                                "fdsa",
+                                "sdf",
+                                "0001",
+                        });
+
+                        try {
+                            Thread.sleep(60000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        testTable.getDatabase().setTransactionSuccessful();
+                        testTable.getDatabase().endTransaction();
+
                         position++;
                         LogUtils.toE("sql", "insert:testBeen" + position);
                     }
@@ -96,6 +110,11 @@ public class SQLiteActivity extends BaseActivity implements View.OnClickListener
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         testTable.insertAndroid(testBeen1, "线程2");
                         position++;
                         LogUtils.toE("sql", "insert:testBeen" + position);
@@ -104,6 +123,11 @@ public class SQLiteActivity extends BaseActivity implements View.OnClickListener
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         testTable.insertAndroid(testBeen1, "线程3");
                         position++;
                         LogUtils.toE("sql", "insert:testBeen" + position);
@@ -113,6 +137,11 @@ public class SQLiteActivity extends BaseActivity implements View.OnClickListener
                  new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         testTable.upDate("线程4", "100","线程4");
                         position++;
                         LogUtils.toE("sql", "insert:testBeen" + position);

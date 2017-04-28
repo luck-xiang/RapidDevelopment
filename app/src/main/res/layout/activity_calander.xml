@@ -72,9 +72,9 @@
         android:onClick="onClick"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:textColor="@color/text_color_f03e1b_ffffff"
+        android:textColor="@color/text_f03e1b_ffffff"
         android:layout_width="match_parent"
-        android:background="@drawable/selector_sure_add"
+        android:background="@drawable/btn_sure_add"
         android:layout_height="40dp"
        />
 
@@ -91,9 +91,9 @@
         android:text="页面类型日历"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:textColor="@color/text_color_f03e1b_ffffff"
+        android:textColor="@color/text_f03e1b_ffffff"
         android:layout_width="match_parent"
-        android:background="@drawable/selector_sure_add"
+        android:background="@drawable/btn_sure_add"
         android:layout_height="40dp"/>
 
 

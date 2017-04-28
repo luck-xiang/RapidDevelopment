@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.kexiang.function.utils.LogUtils;
 import com.kxiang.function.R;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public abstract class BaseRecycleRefreshOrLoadingMoreAdapter<T> extends BaseRecy
             public boolean onTouch(View v, MotionEvent event) {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    LogUtils.toE("recyclerView", "lastItemPosition:  " + lastItemPosition);
+//                    LogUtils.toE("recyclerView", "lastItemPosition:  " + lastItemPosition);
                     if (lastItemPosition + 1 == getItemCount()) {
                         startLoading();
                     }
@@ -53,7 +52,7 @@ public abstract class BaseRecycleRefreshOrLoadingMoreAdapter<T> extends BaseRecy
                 //获取最后一个可见view的位置
                 lastItemPosition = linearManager.findLastVisibleItemPosition();
 
-                LogUtils.toE("recyclerView", "lastItemPosition:  " + lastItemPosition);
+//                LogUtils.toE("recyclerView", "lastItemPosition:  " + lastItemPosition);
                 if (lastItemPosition + 1 == getItemCount()) {
                     startLoading();
                 }
@@ -131,7 +130,7 @@ public abstract class BaseRecycleRefreshOrLoadingMoreAdapter<T> extends BaseRecy
      */
     private void startLoading() {
         holderLoading.ll_footer.setEnabled(false);
-        LogUtils.toE("下拉加载", "status:" + status);
+//        LogUtils.toE("下拉加载", "status:" + status);
         if (onLoadingMoreListener != null && !status && holderLoading != null) {
             status = true;
             holderLoading.startLoadingShow();
@@ -146,6 +145,7 @@ public abstract class BaseRecycleRefreshOrLoadingMoreAdapter<T> extends BaseRecy
      */
     public void noMoreData() {
         if (holderLoading != null) {
+            status = true;
             holderLoading.pb_footer.setVisibility(View.GONE);
             stringStatus = "没有更多了";
             holderLoading.stopName(stringStatus);

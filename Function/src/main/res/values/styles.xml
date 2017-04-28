@@ -1,0 +1,15 @@
+<resources>
+
+
+    <!--CircleImageView属性定义区-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension"/>
+        <attr name="civ_border_color" format="color"/>
+        <attr name="civ_border_overlay" format="boolean"/>
+        <attr name="civ_fill_color" format="color"/>
+    </declare-styleable>
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <!--CircleImageView属性定义区-->
+
+</resources>

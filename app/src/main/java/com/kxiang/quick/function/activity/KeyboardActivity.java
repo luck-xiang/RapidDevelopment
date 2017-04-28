@@ -22,17 +22,16 @@ public class KeyboardActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keyboard);
-
-        initView();
-    }
-
-    @Override
-    protected void initView() {
         initStatusBarColor(R.color.color_no);
         initTitle();
         initKeyboard();
         initTitleBar();
         initBanner();
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     private EditText et_number;

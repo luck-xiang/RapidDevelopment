@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
+import com.kexiang.function.db.TableImp;
 import com.kexiang.function.utils.LogUtils;
 
 import java.util.List;
@@ -143,16 +144,7 @@ public class DaoTest extends TableImp {
      */
     public static class Sql {
         public static String TABLE_NAME = "testTable";
-        /**
-         * 创建表
-         */
-        public static final String CREATE_TABLE =
-                "create table " +
-                        TABLE_NAME +
-                        "(id integer primary key autoincrement not null," +
-                        " name text not null," +
-                        " sex text not null," +
-                        " id_DB integer not null)";
+
 
         public static final String insertALL = "insert into " +
                 TABLE_NAME +

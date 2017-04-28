@@ -17,44 +17,75 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.google.gson.Gson;
+import com.kexiang.function.utils.AppVersionUtils;
+import com.kexiang.function.utils.LogUtils;
 import com.kexiang.function.view.banner.BannersView;
 import com.kexiang.function.view.recycleview.OnRecycleItemClickListener;
 import com.kexiang.function.view.recycleview.RecycleDividerItemLinear;
 import com.kxiang.quick.base.BaseActivity;
 import com.kxiang.quick.bean.ClassBean;
+import com.kxiang.quick.bean.JsonBean;
 import com.kxiang.quick.dbtest.DBTestActivity;
 import com.kxiang.quick.function.activity.CalanderActivity;
+import com.kxiang.quick.function.activity.DownLoadActivity;
+import com.kxiang.quick.function.activity.HandleActivity;
 import com.kxiang.quick.function.activity.KeyboardActivity;
+import com.kxiang.quick.function.activity.KeyboardCustomActivity;
+import com.kxiang.quick.function.activity.MaterialMainActivity;
 import com.kxiang.quick.function.activity.MemoryActivity;
+import com.kxiang.quick.function.activity.OwnViewActivity;
 import com.kxiang.quick.function.activity.RadioCheckActivity;
 import com.kxiang.quick.function.activity.RefreshLoadingActivity;
+import com.kxiang.quick.function.activity.RxActivity;
 import com.kxiang.quick.function.activity.SQLiteActivity;
+import com.kxiang.quick.function.activity.ScreenActivity;
 import com.kxiang.quick.function.activity.SmallToolsActivity;
 import com.kxiang.quick.function.activity.SocketActivity;
+import com.kxiang.quick.function.activity.touch.TouchActivity;
 import com.kxiang.quick.function.adapter.MainAdapter;
+import com.kxiang.quick.news.NewsMainActivity;
+import com.kxiang.quick.socket.ClientActivity;
+import com.kxiang.quick.socket.ServerActivity;
+import com.kxiang.quick.socket.chat.ChatMainActivity;
+import com.kxiang.quick.socket.chat.LoginActivity;
+import com.tencent.bugly.beta.Beta;
+import com.tencent.bugly.beta.UpgradeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
+    String s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quick_activity_main);
-        initView();
-    }
-    @Override
-    protected void initView() {
         initStatusBarColor(R.color.color_no);
+        initTitleBar();
         registerInternet();
         initRecycle();
-        initTitleBar();
         initBanner();
+        TestTools();
+        loadUpgradeInfo();
+
+
+        String json = "{\"bean\":[{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":\"10000000010001\",\"relative\":\"父亲\",\"name\":\"微信\"}]}";
+
+        Gson gson = new Gson();
+        JsonBean jsonBean = gson.fromJson(json, JsonBean.class);
+        LogUtils.toJsonString("json", jsonBean);
+
+
+        LogUtils.toE("Pixels", "heightPixels:" + getResources().getDisplayMetrics().heightPixels);
+        LogUtils.toE("Pixels", "widthPixels:" + getResources().getDisplayMetrics().widthPixels);
     }
 
-
+    @Override
+    protected void initView() {
+    }
 
     RelativeLayout rl_title_bar;
 
@@ -81,6 +112,7 @@ public class MainActivity extends BaseActivity {
 
         }
     }
+
     private BannersView banners_view;
     private int[] imageID;
 
@@ -104,18 +136,20 @@ public class MainActivity extends BaseActivity {
                 FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 fruitImageView.setLayoutParams(params);
-//                fruitImageView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//
-//                    }
-//                });
+                fruitImageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        showToastShort("点击了" + position);
+                    }
+                });
                 fruitImageView.setBackgroundResource(imageID[position % imageID.length]);
                 //Glide.with(context).load(imageUrlList.get(position)).into(fruitImageView);
                 return fruitImageView;
             }
         });
     }
+
     private List<ClassBean> classBeanList;
     private MainAdapter allAdapter;
     private RecyclerView rlv_all;
@@ -142,19 +176,43 @@ public class MainActivity extends BaseActivity {
             }
         });
         rlv_all.setAdapter(allAdapter);
+
     }
 
     private void addData() {
+        LogUtils.toELogger("addData", "你好呀");
+        classBeanList.add(getClassBean("自定义View", OwnViewActivity.class));
+        classBeanList.add(getClassBean("触摸事件", TouchActivity.class));
+        classBeanList.add(getClassBean("Handle测试", HandleActivity.class));
+        classBeanList.add(getClassBean("rx和Retrofit结合使用", RxActivity.class));
+        classBeanList.add(getClassBean("小工具集合", SmallToolsActivity.class));
+        classBeanList.add(getClassBean("聊天客", LoginActivity.class));
+        classBeanList.add(getClassBean("聊天客服端", ChatMainActivity.class));
+        classBeanList.add(getClassBean("Client客户端", ClientActivity.class));
+        classBeanList.add(getClassBean("Server服务端", ServerActivity.class));
+        classBeanList.add(getClassBean("适配app", ScreenActivity.class));
+        classBeanList.add(getClassBean("新闻app", NewsMainActivity.class));
+        classBeanList.add(getClassBean("Material", MaterialMainActivity.class));
+        classBeanList.add(getClassBean("数据下载测试", DownLoadActivity.class));
         classBeanList.add(getClassBean("数据库测试", DBTestActivity.class));
         classBeanList.add(getClassBean("Sokcet测试", SocketActivity.class));
-        classBeanList.add(getClassBean("自定义软键盘\n带删除输入框\n轮播广告条", KeyboardActivity.class));
+        classBeanList.add(getClassBean("自定义软键盘", KeyboardCustomActivity.class));
+        classBeanList.add(getClassBean("自定义软键盘\n带删除输入框\n轮播广告条",
+                KeyboardActivity.class));
         classBeanList.add(getClassBean("数据库操作", SQLiteActivity.class));
         classBeanList.add(getClassBean("Rxjava测试", MemoryActivity.class));
-        classBeanList.add(getClassBean("小工具集合", SmallToolsActivity.class));
         classBeanList.add(getClassBean("单选复选定向选择", RadioCheckActivity.class));
         classBeanList.add(getClassBean("日历控件", CalanderActivity.class));
-        classBeanList.add(getClassBean("下拉刷新上拉加载更多功能页面", RefreshLoadingActivity.class));
+        classBeanList.add(getClassBean("下拉刷新上拉加载更多功能页面",
+                RefreshLoadingActivity.class));
     }
+
+    private void TestTools() {
+        AppVersionUtils.getAppVersionName(thisActivity);
+
+
+    }
+
 
     private ClassBean getClassBean(String name, Class<?> theClass) {
         ClassBean bean = new ClassBean();
@@ -221,4 +279,35 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         unregisterReceiver(internetBroadcast);
     }
+
+    private void loadUpgradeInfo() {
+
+
+        /***** 获取升级信息 *****/
+        UpgradeInfo upgradeInfo = Beta.getUpgradeInfo();
+
+        if (upgradeInfo == null) {
+            LogUtils.toE("升级", "无升级信息");
+            return;
+        }
+
+        StringBuilder info = new StringBuilder();
+        info.append("id: ").append(upgradeInfo.id).append("\n");
+        info.append("标题: ").append(upgradeInfo.title).append("\n");
+        info.append("升级说明: ").append(upgradeInfo.newFeature).append("\n");
+        info.append("versionCode: ").append(upgradeInfo.versionCode).append("\n");
+        info.append("versionName: ").append(upgradeInfo.versionName).append("\n");
+        info.append("发布时间: ").append(upgradeInfo.publishTime).append("\n");
+        info.append("安装包Md5: ").append(upgradeInfo.apkMd5).append("\n");
+        info.append("安装包下载地址: ").append(upgradeInfo.apkUrl).append("\n");
+        info.append("安装包大小: ").append(upgradeInfo.fileSize).append("\n");
+        info.append("弹窗间隔（ms）: ").append(upgradeInfo.popInterval).append("\n");
+        info.append("弹窗次数: ").append(upgradeInfo.popTimes).append("\n");
+        info.append("发布类型（0:测试 1:正式）: ").append(upgradeInfo.publishType).append("\n");
+        info.append("弹窗类型（1:建议 2:强制 3:手工）: ").append(upgradeInfo.upgradeType).append("\n");
+        info.append("图片Url：").append(upgradeInfo.imageUrl);
+
+        LogUtils.toE("升级", info.toString());
+    }
+
 }

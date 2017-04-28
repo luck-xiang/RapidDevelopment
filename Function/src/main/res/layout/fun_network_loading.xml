@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_network_loading"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/color_ffffff"
+              android:gravity="center"
+    >
+
+    <ProgressBar
+
+        android:id="@+id/pb_circle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:id="@+id/tv_show_net"
+        android:text="网络故障，请检测网络后点击加载"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

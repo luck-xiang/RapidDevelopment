@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="titlebar_right" type="id"/>
+    <item name="titlebar_left" type="id"/>
+</resources>

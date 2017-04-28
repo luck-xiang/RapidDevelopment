@@ -3,6 +3,8 @@ package com.kxiang.quick.utils;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.kxiang.quick.base.BaseActivity;
@@ -38,5 +40,7 @@ public class ApplicationUtils {
 
     }
 
-
+    public static FragmentManager getSupportFragmentManager(View view) {
+        return ((FragmentActivity) (view.getContext())).getSupportFragmentManager();
+    }
 }

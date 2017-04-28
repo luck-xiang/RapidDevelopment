@@ -8,4 +8,8 @@
     <string name="notifyMsgRead">当前应用缺少手机读写储存权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限设置。</string>
     <string name="setting">设置</string>
     <string name="cancel">取消</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

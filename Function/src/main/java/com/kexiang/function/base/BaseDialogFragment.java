@@ -43,10 +43,19 @@ public abstract class BaseDialogFragment extends DialogFragment {
         super.onActivityCreated(savedInstanceState);
         onActivityCreatedBase(savedInstanceState);
     }
+
     protected void layoutParams(Context context, View view, float w, float h) {
         int width = (int) (ScreenUtils.getScreenWidth(context) * w);
         int height = (int) (ScreenUtils.getScreenHeight(context) * h);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
         view.setLayoutParams(params);
     }
+
+    protected void layoutParams(float w, float h) {
+        int width = (int) (ScreenUtils.getScreenWidth(getContext()) * w);
+        int height = (int) (ScreenUtils.getScreenHeight(getContext()) * h);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
+        getView().setLayoutParams(params);
+    }
+
 }

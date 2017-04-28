@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <EditText
+        android:text="172.27.27.2"
+        android:id="@+id/et_port"
+        android:background="@drawable/border_cr_ffffff_f30e1b_three"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <EditText
+        android:id="@+id/et_name"
+        android:background="@drawable/border_cr_ffffff_f30e1b_three"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:text="登录"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/text_f03e1b_ffffff"
+        android:layout_width="80dp"
+        android:background="@drawable/btn_sure_add"
+        android:layout_height="30dp"
+        />
+
+
+    <Button
+        android:id="@+id/btn_start"
+        android:text="开启后台"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/text_f03e1b_ffffff"
+        android:layout_width="80dp"
+        android:background="@drawable/btn_sure_add"
+        android:layout_height="30dp"
+        />
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.kxiang.quick.function.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -10,6 +11,20 @@ import com.kexiang.function.view.calendar.DialogCalender;
 import com.kexiang.function.view.loop.calendar.CalendarWheelDialog;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
+import com.kxiang.quick.net.ApiNetworkAddressService;
+import com.kxiang.quick.net.UrlFields;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.kxiang.quick.net.BaseRetrofit.gson;
 
 
 public class CalanderActivity extends BaseActivity implements View.OnClickListener {
@@ -20,10 +35,10 @@ public class CalanderActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calander);
         initStatusBarColor();
-        initTitle();
-        tv_title_name.setText("日历控件");
         initView();
 
+
+//        interceptor();
     }
 
     private TextView tv_loop;
@@ -35,6 +50,8 @@ public class CalanderActivity extends BaseActivity implements View.OnClickListen
     private CheckBox cb_5;
 
     public void initView() {
+        initTitle();
+        tv_title_name.setText("日历控件");
         tv_loop = (TextView) findViewById(R.id.tv_loop);
         tv_calendar = (TextView) findViewById(R.id.tv_calendar);
         cb_1 = (CheckBox) findViewById(R.id.cb_1);
@@ -80,7 +97,8 @@ public class CalanderActivity extends BaseActivity implements View.OnClickListen
 
                 dialogStart.setOnDateSelectListener(new CalendarWheelDialog.OnDateSelectListener() {
                     @Override
-                    public void onDateSelect(String year, String month, String day, String hh, String mm) {
+                    public void onDateSelect(String year, String month,
+                                             String day, String hh, String mm) {
                         tv_loop.setText(year + "-" + month + "-" + day + "  " + hh + ":" + mm);
 
                     }
@@ -101,5 +119,48 @@ public class CalanderActivity extends BaseActivity implements View.OnClickListen
                 });
                 break;
         }
+    }
+
+
+    private void interceptor() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient okHttpClient =
+                        new OkHttpClient.Builder()
+                                .retryOnConnectionFailure(true)
+                                .addInterceptor(new Interceptor() {
+                                    @Override
+                                    public Response intercept(Chain chain) throws IOException {
+                                        Request request = chain.request();
+                                        Log.e("zzz", "request====111111111111111111111111111111");
+                                        Log.e("zzz", "request====" + request.headers().toString());
+                                        okhttp3.Response proceed = chain.proceed(request);
+                                        Log.e("zzz", "proceed====" + proceed.headers().toString());
+                                        Log.e("zzz", "request.body()====" + request.body());
+                                        Log.e("zzz", "proceed.body()====" + proceed.body().string());
+
+                                        return proceed;
+                                    }
+                                })
+                                .connectTimeout(10, TimeUnit.SECONDS)
+                                .build();
+
+                Retrofit retrofit =
+                        new Retrofit.Builder()
+                                .client(okHttpClient)
+                                .baseUrl(UrlFields.URL_BASE)
+                                .addConverterFactory(GsonConverterFactory.create(gson))
+                                .build();
+
+                try {
+                    retrofit.create(ApiNetworkAddressService.class).newWork("http://www.baidu.com").execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 }

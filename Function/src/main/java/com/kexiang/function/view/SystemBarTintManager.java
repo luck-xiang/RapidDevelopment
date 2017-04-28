@@ -1,5 +1,20 @@
-package com.kexiang.function.view;
+/*
+ * Copyright (C) 2013 readyState Software Ltd
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+package com.kexiang.function.view;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -23,29 +38,9 @@ import android.widget.FrameLayout.LayoutParams;
 import java.lang.reflect.Method;
 
 /**
- * 项目名称:世旭智慧平台
- * 创建人:kexiang
- * 创建时间:2016/8/8 9:18
- */
-/*
- * Copyright (C) 2013 readyState Software Ltd
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * Class to manage status and navigation bar tint effects when using KitKat
+ * Class to manage status and navigation bar tint effects when using KitKat 
  * translucent system UI modes.
+ *
  */
 public class SystemBarTintManager {
 
@@ -136,7 +131,7 @@ public class SystemBarTintManager {
 
     /**
      * Enable tinting of the system status bar.
-     * <p/>
+     *
      * If the platform is running Jelly Bean or earlier, or translucent system
      * UI modes have not been enabled in either the theme or via window flags,
      * then this method does nothing.
@@ -152,7 +147,7 @@ public class SystemBarTintManager {
 
     /**
      * Enable tinting of the system navigation bar.
-     * <p/>
+     *
      * If the platform does not have soft navigation keys, is running Jelly Bean
      * or earlier, or translucent system UI modes have not been enabled in either
      * the theme or via window flags, then this method does nothing.
@@ -344,8 +339,7 @@ public class SystemBarTintManager {
         if (mConfig.isNavigationAtBottom()) {
             params = new LayoutParams(LayoutParams.MATCH_PARENT, mConfig.getNavigationBarHeight());
             params.gravity = Gravity.BOTTOM;
-        }
-        else {
+        } else {
             params = new LayoutParams(mConfig.getNavigationBarWidth(), LayoutParams.MATCH_PARENT);
             params.gravity = Gravity.RIGHT;
         }
@@ -358,6 +352,7 @@ public class SystemBarTintManager {
     /**
      * Class which describes system bar sizing and other characteristics for the current
      * device configuration.
+     *
      */
     public static class SystemBarConfig {
 
@@ -410,8 +405,7 @@ public class SystemBarTintManager {
                     String key;
                     if (mInPortrait) {
                         key = NAV_BAR_HEIGHT_RES_NAME;
-                    }
-                    else {
+                    } else {
                         key = NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME;
                     }
                     return getInternalDimensionSize(res, key);
@@ -441,13 +435,11 @@ public class SystemBarTintManager {
                 // check override flag (see static block)
                 if ("1".equals(sNavBarOverride)) {
                     hasNav = false;
-                }
-                else if ("0".equals(sNavBarOverride)) {
+                } else if ("0".equals(sNavBarOverride)) {
                     hasNav = true;
                 }
                 return hasNav;
-            }
-            else { // fallback
+            } else { // fallback
                 return !ViewConfiguration.get(context).hasPermanentMenuKey();
             }
         }
@@ -466,8 +458,7 @@ public class SystemBarTintManager {
             DisplayMetrics metrics = new DisplayMetrics();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-            }
-            else {
+            } else {
                 // TODO this is not correct, but we don't really care pre-kitkat
                 activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
             }
@@ -552,8 +543,7 @@ public class SystemBarTintManager {
         public int getPixelInsetBottom() {
             if (mTranslucentNavBar && isNavigationAtBottom()) {
                 return mNavigationBarHeight;
-            }
-            else {
+            } else {
                 return 0;
             }
         }
@@ -566,8 +556,7 @@ public class SystemBarTintManager {
         public int getPixelInsetRight() {
             if (mTranslucentNavBar && !isNavigationAtBottom()) {
                 return mNavigationBarWidth;
-            }
-            else {
+            } else {
                 return 0;
             }
         }

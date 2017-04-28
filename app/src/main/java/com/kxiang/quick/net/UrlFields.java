@@ -10,7 +10,8 @@ public class UrlFields {
     /**
      * 根地址
      */
-    public static final String URL_BASE = "http://192.168.2.18:8001/api/";
+//    public static final String URL_BASE = "http://192.168.2.57:8080/";
+    public static final String URL_BASE = "http://c.3g.163.com/";
 
 
 }

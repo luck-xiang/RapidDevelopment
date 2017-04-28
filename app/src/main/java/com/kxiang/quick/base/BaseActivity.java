@@ -5,8 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.kexiang.function.utils.LogUtils;
 import com.kexiang.function.view.SystemBarTintSet;
+import com.kexiang.function.view.TitleBar;
 import com.kxiang.quick.MainActivity;
 import com.kxiang.quick.R;
 
@@ -27,7 +29,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * 创建人:kexiang
  * 创建时间:2016/8/5 9:11
  */
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends AppCompatActivity implements TitleBar.OnTitleBarClickListener {
 
 
     /**
@@ -35,6 +37,7 @@ public abstract class BaseActivity extends FragmentActivity {
      */
     protected BaseActivity thisActivity;
     protected CompositeDisposable disposable;
+    protected TitleBar title_bar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,22 +57,37 @@ public abstract class BaseActivity extends FragmentActivity {
         // bandService();
     }
 
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        title_bar = (TitleBar) findViewById(R.id.title_bar);
+        if (title_bar != null)
+            title_bar.setOnTitleBarClickListener(this);
+    }
 
     /**
-     * 如果不需要设置头部颜色或者需要改变头部颜色修改该函数
-     * 填上SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
+     * 设置状态栏固定颜色颜色
      */
     protected void initStatusBarColor() {
         SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
     }
 
     /**
-     * 修改头部颜色
+     * 设置状态栏特定颜色
      */
     protected void initStatusBarColor(int color) {
         SystemBarTintSet.setStatusBarKITKATabove(this, color);
     }
 
+    @Override
+    public void onRightClickListener(View v) {
+
+    }
+
+    @Override
+    public void onLeftClickListener(View v) {
+        finish();
+    }
 
     protected ImageView iv_title_left;
     protected TextView tv_title_name;
@@ -98,6 +116,9 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected AlertDialog.Builder exceptionBuilder;
 
+    /**
+     * 初始化控件或者数据，该方法是setContentView(int layoutResID)后执行的
+     */
     protected abstract void initView();
 
     //强制退出登录显示框

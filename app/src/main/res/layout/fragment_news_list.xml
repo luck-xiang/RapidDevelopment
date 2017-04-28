@@ -1,0 +1,18 @@
+<com.ybao.pullrefreshview.layout.PullRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/refresh_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.ybao.pullrefreshview.simple.view.NormalHeaderView
+        android:id="@+id/pl_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rlv_all"
+        android:background="@color/refresh_recycle_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</com.ybao.pullrefreshview.layout.PullRefreshLayout>

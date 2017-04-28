@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    >
+
+    <com.kexiang.function.view.TitleBar
+        android:id="@+id/title_bar"
+        android:background="@color/color_f03e1b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.kexiang.function.view.own.MusicBarView
+                android:layout_marginTop="10dp"
+                android:layout_width="200dp"
+                android:layout_height="100dp"/>
+
+            <com.kexiang.function.view.own.LinearGradientView
+                android:layout_marginTop="10dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+            <com.kexiang.function.view.own.BellCircleView
+                android:id="@+id/bell_circle_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

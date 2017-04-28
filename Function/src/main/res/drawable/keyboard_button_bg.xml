@@ -5,62 +5,62 @@
         <shape>
 
             <!--圆角大小-->
-            <corners
-                android:radius="4dp"
-                />
+            <!--<corners-->
+                <!--android:radius="1px"-->
+                <!--/>-->
             <!--距离-->
-            <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"
-                android:top="1dp"
-                />
+            <!--<padding-->
+                <!--android:bottom="1dp"-->
+                <!--android:left="1dp"-->
+                <!--android:right="1dp"-->
+                <!--android:top="1dp"-->
+                <!--/>-->
 
             <!--边框颜色-->
-            <stroke
-                android:color="@color/color_no"
-                android:width="4dp"
-                />
+            <!--<stroke-->
+                <!--android:color="@color/color_27c4c4"-->
+                <!--android:width="1px"-->
+                <!--/>-->
             <!--填充颜色-->
-            <solid android:color="@color/color_b4b4b4"/>
+            <solid android:color="@color/color_27c4c4"/>
 
         </shape>
     </item>
     <item android:state_enabled="false">
         <shape>
 
-            <corners
-                android:radius="4dp"
-                />
-            <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"
-                android:top="1dp"
-                />
-            <stroke
-                android:color="@color/color_no"
-                android:width="4dp"
-                />
+            <!--<corners-->
+                <!--android:radius="1px"-->
+                <!--/>-->
+            <!--<padding-->
+                <!--android:bottom="1dp"-->
+                <!--android:left="1dp"-->
+                <!--android:right="1dp"-->
+                <!--android:top="1dp"-->
+                <!--/>-->
+            <!--<stroke-->
+                <!--android:color="@color/color_dddddd"-->
+                <!--android:width="1px"-->
+                <!--/>-->
             <solid android:color="@color/color_ffffff"/>
         </shape>
     </item>
     <item>
         <shape>
-            <corners
-                android:radius="4dp"
-                />
-            <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"
-                android:top="1dp"
-                />
+            <!--<corners-->
+                <!--android:radius="1px"-->
+                <!--/>-->
+            <!--<padding-->
+                <!--android:bottom="1dp"-->
+                <!--android:left="1dp"-->
+                <!--android:right="1dp"-->
+                <!--android:top="1dp"-->
+                <!--/>-->
             <solid android:color="@color/color_ffffff"/>
-            <stroke
-                android:width="4dp"
-                android:color="@color/color_no"
-                />
+            <!--<stroke-->
+                <!--android:width="1px"-->
+                <!--android:color="@color/color_dddddd"-->
+                <!--/>-->
         </shape>
     </item>
 

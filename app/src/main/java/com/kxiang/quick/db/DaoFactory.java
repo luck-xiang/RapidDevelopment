@@ -2,6 +2,8 @@ package com.kxiang.quick.db;
 
 import android.content.Context;
 
+import com.kexiang.function.db.TableInterface;
+
 /**
  * 项目名称:RapidDevelopment
  * 创建人:kexiang

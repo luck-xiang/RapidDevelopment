@@ -18,6 +18,13 @@
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <!-- 保存资源到SD卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <!-- nfc使用权限 -->
     <uses-feature
@@ -37,14 +44,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.kxiang.quick.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+        <!-- 腾讯bugly -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".function.activity.OnlyRefreshActivity">
         </activity>
         <activity android:name=".function.activity.RefreshLoadingActivity">
         </activity>
@@ -65,6 +83,60 @@
         <activity android:name=".function.activity.SocketActivity">
         </activity>
         <activity android:name=".dbtest.DBTestActivity">
+        </activity>
+        <activity android:name=".function.activity.KeyboardCustomActivity">
+        </activity>
+        <activity android:name=".function.activity.DownLoadActivity">
+        </activity>
+        <activity
+            android:name=".function.activity.MaterialMainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".news.NewsMainActivity">
+        </activity>
+        <activity android:name=".function.activity.ScreenActivity">
+        </activity>
+        <activity android:name=".socket.ServerActivity">
+        </activity>
+        <activity android:name=".socket.ClientActivity">
+        </activity>
+        <activity android:name=".socket.chat.ChatMainActivity">
+        </activity>
+
+        <service
+            android:name=".socket.chat.ChartUtilsService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+        <service
+            android:name=".socket.chat.ClientUtilsService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity android:name=".socket.chat.LoginActivity">
+        </activity>
+        <activity android:name=".socket.chat.ChatListActivity">
+        </activity>
+
+        <receiver
+            android:name=".receiver.CompleteReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".function.activity.RxActivity">
+        </activity>
+        <activity android:name=".function.activity.HandleActivity">
+        </activity>
+        <activity android:name=".function.activity.touch.TouchActivity">
+        </activity>
+        <activity android:name=".function.activity.OwnViewActivity">
         </activity>
     </application>
 

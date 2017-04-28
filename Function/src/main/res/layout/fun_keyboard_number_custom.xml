@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@drawable/line_dddddd"
+    android:showDividers="middle"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:divider="@drawable/line_dddddd"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:divider="@drawable/line_dddddd"
+            android:showDividers="middle">
+
+            <TextView
+                android:id="@+id/tv_1"
+                android:text="1"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:textSize="@dimen/keyboard_textsize"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_2"
+                android:text="2"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_3"
+                android:text="3"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@drawable/line_dddddd"
+            android:showDividers="middle"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_4"
+                android:text="4"
+                android:gravity="center"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/tv_5"
+                android:text="5"
+                android:gravity="center"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+               />
+
+            <TextView
+                android:id="@+id/tv_6"
+                android:text="6"
+                android:gravity="center"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:divider="@drawable/line_dddddd"
+            android:showDividers="middle"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_7"
+                android:text="7"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/tv_8"
+                android:text="8"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/tv_9"
+                android:text="9"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@drawable/line_dddddd"
+            android:showDividers="middle"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_point"
+                android:text="."
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/tv_0"
+                android:text="0"
+                android:textColor="@color/text_474747_ffffff"
+                android:background="@drawable/keyboard_button_bg"
+                android:gravity="center"
+                android:textSize="@dimen/keyboard_textsize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:divider="@drawable/line_dddddd"
+        android:showDividers="middle"
+        android:orientation="vertical">
+
+        <com.kexiang.function.view.DrawableCenterTextView
+            android:id="@+id/tv_delete"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_474747_ffffff"
+            android:background="@drawable/keyboard_button_bg"
+            android:drawableLeft="@drawable/emoji_del"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:text="确定"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

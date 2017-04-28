@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Function/Function.iml" filepath="$PROJECT_DIR$/Function/Function.iml" />
       <module fileurl="file://$PROJECT_DIR$/PullRefresh/PullRefresh.iml" filepath="$PROJECT_DIR$/PullRefresh/PullRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/RapidDevelopment.iml" filepath="$PROJECT_DIR$/RapidDevelopment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UpDateApp/UpDateApp.iml" filepath="$PROJECT_DIR$/UpDateApp/UpDateApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

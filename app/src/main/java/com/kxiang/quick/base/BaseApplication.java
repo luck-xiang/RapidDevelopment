@@ -16,81 +16,47 @@ package com.kxiang.quick.base;
 import android.app.Application;
 import android.content.Context;
 
-import com.google.gson.Gson;
 import com.kexiang.function.utils.AppException;
 import com.kexiang.function.utils.LogUtils;
-import com.kexiang.function.utils.MD5Util;
-import com.kexiang.function.utils.SharedPreferencesUtil;
-import com.kxiang.quick.bean.LoginBack;
 import com.kxiang.quick.net.ApiNetworkAddressService;
-import com.kxiang.quick.net.JsonBeanFactory;
-import com.kxiang.quick.utils.SharedFieds;
-
+import com.kxiang.quick.net.RetrofitFactory;
+import com.tencent.bugly.Bugly;
 
 
 public class BaseApplication extends Application {
 
     protected ApiNetworkAddressService apiNetService;
+    public static final String APP_ID = "72bdbd38c8"; // TODO 替换成bugly上注册的appid
     @Override
     public void onCreate() {
 //        MultiDex.install(this);
-        LogUtils.initDebug(true);
+        LogUtils.initDebug();
+      //  CrashReport.initCrashReport(getApplicationContext(), APP_ID, false);
+        Bugly.init(getApplicationContext(), APP_ID, false);
         super.onCreate();
-        instance = this;
-        apiNetService = JsonBeanFactory.getApiService();
+        context = this;
+        apiNetService = RetrofitFactory.getApiService();
         Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
 
     }
 
-    private LoginBack loginBack;
-    public static int PermissionNull = -10;
-    private int topPermission = PermissionNull;
 
 
-    public int getTopPermission() {
-        if (topPermission == PermissionNull) {
-            if (loginBack == null) {
-                Gson gson = new Gson();
-                String login = (String) SharedPreferencesUtil.get(this,
-                        MD5Util.MD5ToBig32(SharedFieds.LOGINBACK), "error");
-                if (login != null && !login.equals("error")) {
-                    loginBack = gson.fromJson(login, LoginBack.class);
-//                    topPermission =
-//                            ShopPermissionManage.getTopPermission(loginBack.getCurrentShopRoles());
-                }
-            }
+    private String userName;
 
-        }
-        return topPermission;
+    public String getUserName() {
+        return userName;
     }
 
-
-    public void setTopPermission(int topPermission) {
-        this.topPermission = topPermission;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public LoginBack getLoginBack() {
-        if (loginBack == null) {
-            Gson gson = new Gson();
-            String login = (String) SharedPreferencesUtil.get(this,
-                    MD5Util.MD5ToBig32(SharedFieds.LOGINBACK), "error");
-            if (login != null && !login.equals("error")) {
-                loginBack = gson.fromJson(login, LoginBack.class);
-//                topPermission =
-//                        ShopPermissionManage.getTopPermission(loginBack.getCurrentShopRoles());
-            }
-        }
-        return loginBack;
+    private static BaseApplication context;
+    public static BaseApplication getContext() {
+        return context;
     }
 
-    public void setLoginBack(LoginBack loginBack) {
-        this.loginBack = loginBack;
-    }
-
-    private static BaseApplication instance;
-    public static BaseApplication getInstance() {
-        return instance;
-    }
 
     public ApiNetworkAddressService getApiNetService() {
         return apiNetService;

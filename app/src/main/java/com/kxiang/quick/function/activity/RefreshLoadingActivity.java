@@ -24,15 +24,16 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
         initStatusBarColor();
         initTitle();
         tv_title_name.setText("下拉刷新上拉加载");
+        initRadio();
+        initRecycleView();
         initView();
+
     }
 
 
     @Override
     protected void initView() {
-        initRadio();
 
-        initRecycleView();
 
     }
 
@@ -62,7 +63,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
                     initRefreshAndLoading();
                     recycleData.clear();
 
-                    for (int i = 0; i < 20; i++) {
+                    for (int i = 0; i < 3; i++) {
                         recycleData.add("数据:" + position);
                         position++;
                     }
@@ -103,6 +104,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
         }
 
     }
+
 
 
 //    private void setRefresh() {

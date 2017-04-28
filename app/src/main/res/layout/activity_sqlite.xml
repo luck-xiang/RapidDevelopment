@@ -27,8 +27,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:text="插入10000条数据第一种方法"
-            android:textColor="@color/text_color_f03e1b_ffffff"
-            android:background="@drawable/selector_sure_add"
+            android:textColor="@color/text_f03e1b_ffffff"
+            android:background="@drawable/btn_sure_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
@@ -40,8 +40,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:text="插入10000条数据第二种方法"
-            android:textColor="@color/text_color_f03e1b_ffffff"
-            android:background="@drawable/selector_sure_add"
+            android:textColor="@color/text_f03e1b_ffffff"
+            android:background="@drawable/btn_sure_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
@@ -53,8 +53,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:text="查询"
-            android:textColor="@color/text_color_f03e1b_ffffff"
-            android:background="@drawable/selector_sure_add"
+            android:textColor="@color/text_f03e1b_ffffff"
+            android:background="@drawable/btn_sure_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
@@ -67,8 +67,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:text="数据传输"
-            android:textColor="@color/text_color_f03e1b_ffffff"
-            android:background="@drawable/selector_sure_add"
+            android:textColor="@color/text_f03e1b_ffffff"
+            android:background="@drawable/btn_sure_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
@@ -82,8 +82,8 @@
             android:layout_marginLeft="20dp"
             android:text="synchronized测试"
             android:inputType="text"
-            android:textColor="@color/text_color_f03e1b_ffffff"
-            android:background="@drawable/selector_sure_add"
+            android:textColor="@color/text_f03e1b_ffffff"
+            android:background="@drawable/btn_sure_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
@@ -95,8 +95,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:text="数据传输"
-            android:textColor="@color/text_color_f03e1b_ffffff"
-            android:background="@drawable/selector_sure_add"
+            android:textColor="@color/text_f03e1b_ffffff"
+            android:background="@drawable/btn_sure_add"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
 
