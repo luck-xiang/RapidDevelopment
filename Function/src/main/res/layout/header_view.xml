@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal"
+              android:gravity="center"
+    >
+
+
+    <ImageView
+        android:src="@drawable/ic_logo"
+        android:id="@+id/iv_finish_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ProgressBar
+        android:id="@+id/pb_circle"
+        android:visibility="gone"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/tv_content"
+        android:text="下拉刷新"
+        android:textColor="@color/color_ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

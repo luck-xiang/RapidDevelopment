@@ -1,5 +1,33 @@
 <resources>
 
+    <style name="xmlCreateScreanEdittet">
+        <item name="android:background">@drawable/box_rect_f8a899_solid</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/x20</item>
+        <item name="android:textSize">@dimen/x40</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:textColorHint">@color/color_eeeeee</item>
+        <item name="android:layout_marginTop">@dimen/x10</item>
+        <item name="android:inputType">numberDecimal</item>
+        <!--<item name="android:"></item>-->
+    </style>
+
+    <style name="xmlCreateScreanEdittet1">
+        <item name="android:background">@drawable/box_rect_f8a899_solid</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/x20</item>
+        <item name="android:textSize">@dimen/x30</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:textColorHint">@color/color_eeeeee</item>
+        <item name="android:layout_margin">@dimen/x10</item>
+        <item name="android:inputType">numberDecimal</item>
+        <!--<item name="android:"></item>-->
+    </style>
+
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -18,7 +46,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 
-   <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
         <!-- 边框 -->
         <item name="android:windowFrame">@null</item>
         <!-- 是否浮现在activity之上 -->

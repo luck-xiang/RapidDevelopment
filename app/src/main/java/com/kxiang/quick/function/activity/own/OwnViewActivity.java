@@ -1,4 +1,4 @@
-package com.kxiang.quick.function.activity;
+package com.kxiang.quick.function.activity.own;
 
 import android.os.Bundle;
 

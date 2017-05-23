@@ -136,7 +136,19 @@
         </activity>
         <activity android:name=".function.activity.touch.TouchActivity">
         </activity>
-        <activity android:name=".function.activity.OwnViewActivity">
+        <activity android:name=".function.activity.own.OwnViewActivity">
+        </activity>
+        <activity android:name=".function.activity.own.View1Activity">
+        </activity>
+        <activity android:name=".function.activity.start.BActivity">
+        </activity>
+        <activity android:name=".function.activity.start.AActivity">
+        </activity>
+        <activity android:name=".function.activity.own.BaseViewActivity">
+        </activity>
+        <activity android:name=".function.activity.own.ScrollTestActivity">
+        </activity>
+        <activity android:name=".function.activity.XmlCreateScreanActivity">
         </activity>
     </application>
 

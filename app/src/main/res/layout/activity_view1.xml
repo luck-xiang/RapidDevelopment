@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:fitsSystemWindows="true"
+    >
+
+    <!--com.kexiang.function.view.refresh.FlingScrollerLayout-->
+    <com.kexiang.function.view.refresh.FlingScrollerLayout
+        android:background="@color/color_FB819E"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        >
+
+
+        <com.kxiang.quick.function.activity.own.RecycleTestView
+            android:id="@+id/rlv_all"
+            android:background="@color/color_ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <!--<View-->
+        <!--android:background="@color/color_FE749C"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+    </com.kexiang.function.view.refresh.FlingScrollerLayout>
+
+    <View
+        android:background="@color/color_eeeeee"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"/>
+
+    <com.kexiang.function.view.refresh.RefreshLoadingLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@color/color_FB819E"
+        android:layout_height="match_parent">
+
+        <com.kexiang.function.view.refresh.FooterView
+            android:background="@color/darkviolet"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+        </com.kexiang.function.view.refresh.FooterView>
+
+        <com.kexiang.function.view.refresh.HeaderView
+            android:id="@+id/prl_header"
+            android:background="@color/darkviolet"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+        </com.kexiang.function.view.refresh.HeaderView>
+
+        <com.kxiang.quick.function.activity.own.RecycleTestView
+            android:id="@+id/rlv_other"
+            android:background="@color/color_ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.kexiang.function.view.refresh.RefreshLoadingLayout>
+
+
+</LinearLayout>
+

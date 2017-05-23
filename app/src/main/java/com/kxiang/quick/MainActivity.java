@@ -34,7 +34,6 @@ import com.kxiang.quick.function.activity.KeyboardActivity;
 import com.kxiang.quick.function.activity.KeyboardCustomActivity;
 import com.kxiang.quick.function.activity.MaterialMainActivity;
 import com.kxiang.quick.function.activity.MemoryActivity;
-import com.kxiang.quick.function.activity.OwnViewActivity;
 import com.kxiang.quick.function.activity.RadioCheckActivity;
 import com.kxiang.quick.function.activity.RefreshLoadingActivity;
 import com.kxiang.quick.function.activity.RxActivity;
@@ -42,6 +41,12 @@ import com.kxiang.quick.function.activity.SQLiteActivity;
 import com.kxiang.quick.function.activity.ScreenActivity;
 import com.kxiang.quick.function.activity.SmallToolsActivity;
 import com.kxiang.quick.function.activity.SocketActivity;
+import com.kxiang.quick.function.activity.XmlCreateScreanActivity;
+import com.kxiang.quick.function.activity.own.BaseViewActivity;
+import com.kxiang.quick.function.activity.own.OwnViewActivity;
+import com.kxiang.quick.function.activity.own.ScrollTestActivity;
+import com.kxiang.quick.function.activity.own.View1Activity;
+import com.kxiang.quick.function.activity.start.AActivity;
 import com.kxiang.quick.function.activity.touch.TouchActivity;
 import com.kxiang.quick.function.adapter.MainAdapter;
 import com.kxiang.quick.news.NewsMainActivity;
@@ -180,7 +185,14 @@ public class MainActivity extends BaseActivity {
     }
 
     private void addData() {
+
+//        ScrollView
         LogUtils.toELogger("addData", "你好呀");
+        classBeanList.add(getClassBean("xml生成测试", XmlCreateScreanActivity.class));
+        classBeanList.add(getClassBean("scroller测试", View1Activity.class));
+        classBeanList.add(getClassBean("滑动冲突测试", ScrollTestActivity.class));
+        classBeanList.add(getClassBean("基本图形", BaseViewActivity.class));
+        classBeanList.add(getClassBean("启动动画", AActivity.class));
         classBeanList.add(getClassBean("自定义View", OwnViewActivity.class));
         classBeanList.add(getClassBean("触摸事件", TouchActivity.class));
         classBeanList.add(getClassBean("Handle测试", HandleActivity.class));
@@ -203,8 +215,7 @@ public class MainActivity extends BaseActivity {
         classBeanList.add(getClassBean("Rxjava测试", MemoryActivity.class));
         classBeanList.add(getClassBean("单选复选定向选择", RadioCheckActivity.class));
         classBeanList.add(getClassBean("日历控件", CalanderActivity.class));
-        classBeanList.add(getClassBean("下拉刷新上拉加载更多功能页面",
-                RefreshLoadingActivity.class));
+        classBeanList.add(getClassBean("下拉刷新上拉加载更多功能页面", RefreshLoadingActivity.class));
     }
 
     private void TestTools() {

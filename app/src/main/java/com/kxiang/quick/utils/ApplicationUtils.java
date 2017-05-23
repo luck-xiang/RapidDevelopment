@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
-import com.kxiang.quick.base.BaseActivity;
 import com.kxiang.quick.base.BaseApplication;
 
 
@@ -18,29 +17,54 @@ import com.kxiang.quick.base.BaseApplication;
  */
 
 public class ApplicationUtils {
-
     public static BaseApplication getApplicition(View view) {
-        return (BaseApplication) ((BaseActivity) (view.getContext()))
-                .getApplication();
+
+        if (view != null) {
+            return (BaseApplication) ((Activity) (view.getContext()))
+                    .getApplication();
+        }
+        else {
+            return BaseApplication.getContext();
+        }
+
 
     }
 
     public static BaseApplication getApplicition(Activity activity) {
-        return (BaseApplication) activity.getApplication();
+        if (activity != null) {
+            return (BaseApplication) activity.getApplication();
+        }
+        else {
+            return BaseApplication.getContext();
+        }
+
+
     }
 
     public static BaseApplication getApplicition(Application allApplication) {
-        return (BaseApplication) allApplication;
+        if (allApplication != null) {
+            return (BaseApplication) allApplication;
+        }
+        else {
+            return BaseApplication.getContext();
+        }
+
 
     }
 
     public static BaseApplication getApplicition(Context context) {
+        if (context != null) {
+            return (BaseApplication) ((Activity) context).getApplication();
+        }
+        else {
+            return BaseApplication.getContext();
+        }
 
-        return (BaseApplication) ((BaseActivity) context).getApplication();
 
     }
 
     public static FragmentManager getSupportFragmentManager(View view) {
         return ((FragmentActivity) (view.getContext())).getSupportFragmentManager();
+
     }
 }

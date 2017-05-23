@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     >
 
-    <com.kexiang.function.view.TitleBar
+    <com.kexiang.function.view.TitleBarView
         android:id="@+id/title_bar"
         android:background="@color/color_f03e1b"
         android:layout_width="match_parent"

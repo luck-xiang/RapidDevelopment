@@ -29,18 +29,18 @@ public class ViewC extends View {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        LogUtils.toE("ViewC","dispatchTouchEvent："+ev.getAction());
+        LogUtils.toE("ViewC", "dispatchTouchEvent：" + ev.getAction());
 
 
         return super.dispatchTouchEvent(ev);
-       // return true;
+        //return true;
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        LogUtils.toE("ViewC","onTouchEvent："+event.getAction());
+        LogUtils.toE("ViewC", "onTouchEvent：" + event.getAction());
         return super.onTouchEvent(event);
-//        return true;
+        /// return true;
     }
 }

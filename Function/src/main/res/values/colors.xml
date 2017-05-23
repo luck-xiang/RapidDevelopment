@@ -15,6 +15,7 @@
     <color name="color_27c4c4">#27c4c4</color>
     <color name="refresh_recycle_color">#ffffff</color>
     <color name="color_81ccff">#81CCFF</color>
+    <color name="color_969696">#969696</color>
 
     <!-- 今天的 -->
     <color name="dark_bule">#1C82DE</color>
@@ -71,6 +72,7 @@
     <color name="color_FB819E">#FB819E</color>
     <!--<color name="trade_orange">#65D0B7</color>-->
     <color name="color_65D0B7">#65D0B7</color>
+    <color name="color_9082BD">#9082BD</color>
 
 
     <color name="white">#ffffff</color> <!-- 白色 -->

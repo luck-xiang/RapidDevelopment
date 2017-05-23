@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -17,7 +19,7 @@ import android.widget.Toast;
 
 import com.kexiang.function.utils.LogUtils;
 import com.kexiang.function.view.SystemBarTintSet;
-import com.kexiang.function.view.TitleBar;
+import com.kexiang.function.view.TitleBarView;
 import com.kxiang.quick.MainActivity;
 import com.kxiang.quick.R;
 
@@ -29,7 +31,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * 创建人:kexiang
  * 创建时间:2016/8/5 9:11
  */
-public abstract class BaseActivity extends AppCompatActivity implements TitleBar.OnTitleBarClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements TitleBarView.OnTitleBarClickListener {
 
 
     /**
@@ -37,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
      */
     protected BaseActivity thisActivity;
     protected CompositeDisposable disposable;
-    protected TitleBar title_bar;
+    protected TitleBarView title_bar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,9 +62,10 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-        title_bar = (TitleBar) findViewById(R.id.title_bar);
+        title_bar = (TitleBarView) findViewById(R.id.title_bar);
         if (title_bar != null)
             title_bar.setOnTitleBarClickListener(this);
+        initView();
     }
 
     /**
@@ -204,6 +207,15 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
 
 
     @Override
+    public Resources getResources() {
+        Resources res = super.getResources();
+        Configuration config = new Configuration();
+        config.setToDefaults();
+        res.updateConfiguration(config, res.getDisplayMetrics());
+        return res;
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         //解绑服务
@@ -214,6 +226,7 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
         }
         disposable.dispose();
     }
+
 
 //    /**
 //     * 开启后服务

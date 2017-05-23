@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.kexiang.function.view.TitleBarView
+            android:id="@+id/title_bar"
+            android:background="@color/color_f03e1b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:gravity="center"
+            android:text="画图基础"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <com.kxiang.quick.function.activity.own.BaseGraphicsView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <com.kexiang.function.view.own.CalendarBoxView
+            android:background="@color/color_eeeeee"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -42,8 +42,7 @@ import com.ybao.pullrefreshview.support.impl.Pullable;
 import com.ybao.pullrefreshview.support.utils.CanPullUtil;
 
 public class FlingLayout extends FrameLayout
-        implements NestedScrollingChild, NestedScrollingParent
-{
+        implements NestedScrollingChild, NestedScrollingParent {
 
 
     private NestedScrollingParentHelper mParentHelper;
@@ -98,7 +97,6 @@ public class FlingLayout extends FrameLayout
         mParentHelper = new NestedScrollingParentHelper(this);
         mChildHelper = new NestedScrollingChildHelper(this);
     }
-
 
 
     @Override
@@ -167,6 +165,7 @@ public class FlingLayout extends FrameLayout
 
     protected static void setViewTranslationY(View view, float value) {
 
+//        Log.e("setViewTranslationY","value:"+value);
         if (view == null) {
             return;
         }
@@ -215,7 +214,7 @@ public class FlingLayout extends FrameLayout
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
 
-
+//        Log.e("dispatchTouchEvent","mPointerId:"+mPointerId);
         if (mPullView != null && !ViewCompat.isNestedScrollingEnabled(mPullView)) {
             float moveY = getMoveY();
             int pointerCount = ev.getPointerCount();
@@ -287,8 +286,11 @@ public class FlingLayout extends FrameLayout
                             //当不在0,0处
                             ev.setAction(MotionEvent.ACTION_CANCEL);//屏蔽原事件
 
-                            if ((moveY < 0 && moveY + dataY >= 0) || (moveY > 0 && moveY + dataY <= 0)) {
+                            if ((moveY < 0 && moveY + dataY >= 0) ||
+                                    (moveY > 0 && moveY + dataY <= 0)) {
+
                                 //在0,0附近浮动
+
                                 ev.setAction(MotionEvent.ACTION_DOWN);
                                 moveTo(0);
                             }
@@ -298,10 +300,12 @@ public class FlingLayout extends FrameLayout
                                     int ps = 0;
                                     int hDataY = dataY / 2;
                                     if (maxDistance == 0) {
-                                        ps = (int) (-hDataY * Math.abs(moveY) / (float) MAXDISTANCE) - hDataY;
+                                        ps = (int) (-hDataY * Math.abs(moveY) / (float) MAXDISTANCE)
+                                                - hDataY;
                                     }
                                     else {
-                                        ps = (int) (-hDataY * Math.abs(moveY) / (float) maxDistance) - hDataY;
+                                        ps = (int) (-hDataY * Math.abs(moveY) / (float) maxDistance)
+                                                - hDataY;
                                     }
                                     moveBy(ps + dataY);
                                 }
@@ -350,6 +354,7 @@ public class FlingLayout extends FrameLayout
     public void setMaxDistance(int maxDistance) {
         this.maxDistance = maxDistance;
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -357,7 +362,7 @@ public class FlingLayout extends FrameLayout
     }
 
 
-      public void setCanPullDown(boolean canPullDown) {
+    public void setCanPullDown(boolean canPullDown) {
         this.canPullDown = canPullDown;
         if (!canPullDown && getMoveY() > 0) {
             moveTo(0);
@@ -407,7 +412,6 @@ public class FlingLayout extends FrameLayout
     public void setOnScrollListener(OnScrollListener mOnScrollListener) {
         this.mOnScrollListener = mOnScrollListener;
     }
-
 
 
     /**************************
@@ -580,10 +584,7 @@ public class FlingLayout extends FrameLayout
     }
     /**************************
      * NestedScrollingChild
-//     ****************************************/
-
-
-
+     //     ****************************************/
 
 
 }

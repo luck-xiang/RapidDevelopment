@@ -5,9 +5,12 @@ import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Shader;
+import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Scroller;
 
+import com.kexiang.function.utils.LogUtils;
 import com.kxiang.function.R;
 
 import java.util.Random;
@@ -38,8 +41,14 @@ public class MusicBarView extends View {
     Paint paint;
     Random random;
 
+    /**
+     * 用于完成滚动操作的实例
+     */
+    private Scroller mScroller;
 
     private void initView() {
+        mScroller = new Scroller(getContext());
+        mScroller.startScroll(0, 0, 0, 400, 2000);
         paint = new Paint();
 
         random = new Random();
@@ -69,6 +78,18 @@ public class MusicBarView extends View {
 
             }
         }).start();
+    }
+
+
+    @Override
+    public void computeScroll() {
+
+        // 第三步，重写computeScroll()方法，并在其内部完成平滑滚动的逻辑
+        LogUtils.toE("computeScroll", "computeScroll:" + mScroller.computeScrollOffset());
+        if (mScroller.computeScrollOffset()) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+
     }
 
     private int bar = 10;

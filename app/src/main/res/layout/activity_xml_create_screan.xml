@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_xml_create_screan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.kexiang.function.view.TitleBarView
+        android:id="@+id/title_bar"
+        android:background="@color/color_f03e1b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="基础x值"
+            style="@style/xmlCreateScreanEdittet1"/>
+
+        <EditText
+            android:id="@+id/et_x"
+            android:text="720"
+            style="@style/xmlCreateScreanEdittet1"
+            />
+
+        <TextView
+            android:text="基础y值"
+            style="@style/xmlCreateScreanEdittet1"/>
+
+        <EditText
+            android:id="@+id/et_y"
+            android:text="1280"
+            style="@style/xmlCreateScreanEdittet1"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_xdp"
+        android:hint="请输入xDP值"
+        style="@style/xmlCreateScreanEdittet"
+        />
+
+    <EditText
+        android:id="@+id/et_ydp"
+        android:hint="请输入yDP值"
+        style="@style/xmlCreateScreanEdittet"
+        />
+
+    <Button
+        android:id="@+id/btn_sure"
+        android:text="生成"
+        android:textColor="@color/color_ffffff"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/btn_corners_f8a899_fa4672"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

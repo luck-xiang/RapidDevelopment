@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.kexiang.function.view.DialogRadio;
 import com.kexiang.function.view.OnDialogBackListener;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
@@ -66,6 +67,8 @@ public class RadioCheckActivity extends BaseActivity implements View.OnClickList
 
                 break;
             case R.id.btn_2:
+                DialogRadio DialogRadio=new DialogRadio();
+                DialogRadio.show(getSupportFragmentManager(),"radio");
                 break;
 
         }

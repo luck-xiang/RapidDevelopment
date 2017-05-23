@@ -2,4 +2,6 @@
 <resources>
     <item name="titlebar_right" type="id"/>
     <item name="titlebar_left" type="id"/>
+    <item name="tv_title" type="id"/>
+    <item name="tv_header" type="id"/>
 </resources>

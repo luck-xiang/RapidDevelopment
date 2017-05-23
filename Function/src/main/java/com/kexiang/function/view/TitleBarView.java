@@ -2,6 +2,7 @@ package com.kexiang.function.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -17,21 +18,21 @@ import com.kxiang.function.R;
  * 创建时间:2017/4/27 9:20
  */
 
-public class TitleBar extends RelativeLayout implements View.OnClickListener {
+public class TitleBarView extends RelativeLayout implements View.OnClickListener {
 
     private int heightPixels;
 
 
-    public TitleBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TitleBarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public TitleBar(Context context) {
+    public TitleBarView(Context context) {
         super(context);
 
     }
 
-    public TitleBar(Context context, AttributeSet attrs) {
+    public TitleBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context, attrs);
     }
@@ -86,7 +87,8 @@ public class TitleBar extends RelativeLayout implements View.OnClickListener {
                 ViewGroup.LayoutParams.MATCH_PARENT
         );
         rightLayout.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-        rightLayout.addRule(RelativeLayout.ALIGN_PARENT_END);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+            rightLayout.addRule(RelativeLayout.ALIGN_PARENT_END);
         addView(right, rightLayout);
 
 

@@ -4,19 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fitsSystemWindows="true"
     >
-
-    <com.kexiang.function.view.TitleBarView
-        android:id="@+id/title_bar"
-        android:background="@color/color_f03e1b"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x80"/>
 
     <Button
         android:id="@+id/btn_1"
+        android:text="到跳转到B"
+        android:textSize="70sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
 
 </LinearLayout>
