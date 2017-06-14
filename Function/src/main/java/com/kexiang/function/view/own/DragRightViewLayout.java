@@ -457,7 +457,7 @@ public class DragRightViewLayout extends ViewGroup
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
     }
-
+    //activity创建或者view创建的时候调用
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
