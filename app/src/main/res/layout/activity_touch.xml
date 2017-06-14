@@ -4,14 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     >
 
     <include layout="@layout/fun_title_back_bar"/>
 
     <com.kxiang.quick.function.activity.touch.ViewA
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/color_fa4672">
+
+
 
         <com.kxiang.quick.function.activity.touch.ViewB
             android:layout_width="300dp"
@@ -26,5 +30,11 @@
                 android:background="@color/coral"/>
         </com.kxiang.quick.function.activity.touch.ViewB>
     </com.kxiang.quick.function.activity.touch.ViewA>
+
+
+    <TextView
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"/>
 
 </LinearLayout>

@@ -1,7 +1,6 @@
 package com.kxiang.quick.news.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseFragment;
 import com.kxiang.quick.news.NewsMainActivity;
+import com.kxiang.quick.news.bean.NewsContentBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,17 +43,16 @@ public class NewsMainFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_news_main, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
+    @Override
+    protected void onActivityCreatedListener(Bundle savedInstanceState) {
         initView();
     }
 
     private void initView() {
         initTitle();
         initViewPager();
-        tv_title_name.setText("新闻");
+        title_name.setText("新闻");
     }
 
     @Override
@@ -71,35 +70,39 @@ public class NewsMainFragment extends BaseFragment {
     }
 
     private TabLayout tab_layout;
-    private ViewPager view_pgager;
-
+    private ViewPager view_pager;
     private List<Fragment> fragments;
+    private NewsContentBean newsContentBean;
 
     private void initViewPager() {
+        newsContentBean = ((NewsMainActivity) getActivity())
+                .getNewsMainDataUitls()
+                .getNewsContentBean();
+
         fragments = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            fragments.add(new NewsListFragment());
+        for (int i = 0; i < newsContentBean.getGroupBeen().size(); i++) {
+            fragments.add(NewsListFragment.newInstance(i));
         }
 
-        view_pgager = (ViewPager) getView().findViewById(R.id.view_pgager);
-        view_pgager.setAdapter(new ViewPagerBaseAdapter(getChildFragmentManager()));
+        view_pager = (ViewPager) getView().findViewById(R.id.view_pager);
+        view_pager.setAdapter(new ViewPagerBaseAdapter(getChildFragmentManager()));
         tab_layout = (TabLayout) getView().findViewById(R.id.tab_layout);
         tab_layout.setTabMode(TabLayout.MODE_FIXED);//设置tab模式，当前为系统默认模式
-        tab_layout.setupWithViewPager(view_pgager, true);
-        tab_layout.getTabAt(0).setText("数据1");
-        tab_layout.getTabAt(1).setText("数据2");
-        tab_layout.getTabAt(2).setText("数据3");
-        tab_layout.getTabAt(3).setText("数据4");
-        tab_layout.getTabAt(4).setText("数据5");
-        tab_layout.getTabAt(5).setText("数据5");
-        tab_layout.getTabAt(6).setText("数据7");
+        tab_layout.setupWithViewPager(view_pager, true);
+//        tab_layout.getTabAt(0).setText("数据1");
+//        tab_layout.getTabAt(1).setText("数据2");
+//        tab_layout.getTabAt(2).setText("数据3");
+//        tab_layout.getTabAt(3).setText("数据4");
+//        tab_layout.getTabAt(4).setText("数据5");
+//        tab_layout.getTabAt(5).setText("数据5");
+//        tab_layout.getTabAt(6).setText("数据7");
 
         tab_layout.postDelayed(new Runnable() {
             @Override
             public void run() {
                 tab_layout.setTabMode(TabLayout.MODE_SCROLLABLE);
             }
-        },3000);
+        }, 3000);
     }
 
 
@@ -116,7 +119,7 @@ public class NewsMainFragment extends BaseFragment {
 
         @Override
         public int getCount() {
-            return 7;
+            return fragments.size();
         }
 
         @Override
@@ -125,6 +128,9 @@ public class NewsMainFragment extends BaseFragment {
 
         }
 
-
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return newsContentBean.getGroupBeen().get(position).getGroupName();
+        }
     }
 }

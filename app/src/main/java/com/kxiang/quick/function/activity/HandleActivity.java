@@ -81,9 +81,9 @@ public class HandleActivity extends BaseActivity implements View.OnClickListener
                 LogUtils.toE("handleRun", Thread.currentThread().getName());
             }
         }).start();
-        iv_title_left = (ImageView) findViewById(R.id.iv_title_left);
-        tv_title_name = (TextView) findViewById(R.id.tv_title_name);
-        tv_title_right = (TextView) findViewById(R.id.tv_title_right);
+        title_left = (ImageView) findViewById(R.id.title_left);
+        title_name = (TextView) findViewById(R.id.title_name);
+        title_right = (TextView) findViewById(R.id.title_right);
         btn_1 = (Button) findViewById(R.id.btn_1);
         btn_1.setOnClickListener(this);
     }

@@ -9,10 +9,32 @@
     android:fitsSystemWindows="true"
     >
 
-    <FrameLayout
-        android:id="@+id/fl_main"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fl_main"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_ffffff">
+
+            <TextView
+                android:id="@+id/tv_show"
+                android:textSize="@dimen/x30"
+                android:gravity="center"
+                android:textColor="@color/color_fd6361"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+
 
     <fragment
         android:name="com.kxiang.quick.news.fragment.UserDefinedFragment"

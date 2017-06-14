@@ -18,14 +18,14 @@
             android:layout_height="40dp"
             app:layout_scrollFlags="enterAlways|scroll|snap">
             <ImageView
-                android:id="@+id/iv_title_left"
+                android:id="@+id/title_left"
                 android:layout_width="50dp"
                 android:padding="10dp"
                 android:src="@drawable/back_default"
                 android:layout_height="match_parent"/>
 
             <TextView
-                android:id="@+id/tv_title_right"
+                android:id="@+id/title_right"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
@@ -35,7 +35,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_title_name"
+                android:id="@+id/title_name"
                 android:textSize="19sp"
                 android:gravity="center"
                 android:textColor="@color/color_ffffff"
@@ -50,6 +50,7 @@
             android:layout_height="40dp"
             app:tabIndicatorColor="@color/color_81ccff"
             app:tabSelectedTextColor="@color/color_81ccff"
+            style="@style/tablayout"
             />
     </android.support.design.widget.AppBarLayout>
 
@@ -57,14 +58,12 @@
 
     <android.support.v4.view.ViewPager
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:id="@+id/view_pgager"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <View
-            android:background="@color/color_dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
+
         </android.support.v4.view.ViewPager>
+
 
 
 </android.support.design.widget.CoordinatorLayout>

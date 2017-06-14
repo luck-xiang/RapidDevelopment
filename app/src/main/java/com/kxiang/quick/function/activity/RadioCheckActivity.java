@@ -27,7 +27,7 @@ public class RadioCheckActivity extends BaseActivity implements View.OnClickList
         initStatusBarColor();
         initTitle();
         initView();
-        tv_title_name.setText("单选,多选,定项选择");
+        title_name.setText("单选,多选,定项选择");
         et_number = (TextView) findViewById(R.id.et_number);
         checkList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {

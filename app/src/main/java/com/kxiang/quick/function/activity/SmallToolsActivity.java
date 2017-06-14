@@ -26,7 +26,7 @@ public class SmallToolsActivity extends BaseActivity implements View.OnClickList
         setContentView(R.layout.quick_activity_small_tools);
         initStatusBarColor();
         initTitle();
-        tv_title_name.setText("小工具集合");
+        title_name.setText("小工具集合");
 
         initView();
     }

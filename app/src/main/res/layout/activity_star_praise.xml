@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_xml_create_screan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+    <com.kexiang.function.view.TitleBarView
+        android:id="@+id/title_bar"
+        android:background="@color/color_f03e1b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:text="星星加"
+        android:id="@+id/btn_add"
+        android:textColor="@color/color_f8a899"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/layer_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="星星减"
+        android:id="@+id/btn_sub"
+        android:textColor="@color/color_f8a899"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/layer_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <com.kexiang.function.view.own.star.StarLikesView
+        android:id="@+id/star_normal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:starNumbers="6"
+        app:starPadding="20dp"
+        app:starSingleSize="30dp"
+        />
+
+    <com.kexiang.function.view.own.star.StarLikesView
+        android:id="@+id/star_scale"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:starNumbers="6"
+        app:starPadding="20dp"
+        app:starSingleSize="30dp"
+        />
+
+    <com.kexiang.function.view.own.star.StarLikesView
+        android:id="@+id/star_rotate"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:starNumbers="6"
+        app:starPadding="20dp"
+        app:starSingleSize="30dp"
+        />
+
+    <TextView
+        android:text="滑动速率"
+        android:id="@+id/tv_show"
+        android:textSize="@dimen/x30"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+
+    <!--<com.kexiang.function.view.own.normal.XfermodeView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
+
+</LinearLayout>

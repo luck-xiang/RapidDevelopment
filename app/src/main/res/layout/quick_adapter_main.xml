@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/ll_all"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:fitsSystemWindows="true"
-              android:layout_height="80dp">
+<com.kexiang.function.view.own.DragRightViewLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_drawerlayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="80dp">
 
     <TextView
         android:id="@+id/tv_name_show"
@@ -12,4 +13,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <LinearLayout
+
+        android:layout_width="200dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:text="取消"
+            android:textSize="@dimen/x40"
+            android:background="@color/color_fd6361"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:text="删除"
+            android:textSize="@dimen/x40"
+            android:background="@color/color_f03e1b"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</com.kexiang.function.view.own.DragRightViewLayout>

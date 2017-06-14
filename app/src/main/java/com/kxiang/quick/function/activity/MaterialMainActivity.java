@@ -1,7 +1,6 @@
 package com.kxiang.quick.function.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -29,20 +28,19 @@ public class MaterialMainActivity extends BaseRefreshLoadingActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-        initRecycleView();
     }
-    protected RecyclerView rlv_all;
+
     RefreshLoadingAdapter recycleAdapter;
     List<String> recycleData;
     private int position = 1;
 
-    private void initRecycleView() {
+    @Override
+    public void initRecycleView() {
         recycleData = new ArrayList<>();
         rlv_all = (RecyclerView) findViewById(R.id.rlv_all);
         recycleAdapter = new RefreshLoadingAdapter(this, recycleData, rlv_all);
+        setRecycle(recycleAdapter, null, null);
         initRecycle(recycleAdapter);
-        rlv_all.setLayoutManager(new LinearLayoutManager(thisActivity));
-        rlv_all.setAdapter(recycleAdapter);
     }
 
 
@@ -98,6 +96,7 @@ public class MaterialMainActivity extends BaseRefreshLoadingActivity {
         }
 
     }
+
     @Override
     protected void initView() {
 

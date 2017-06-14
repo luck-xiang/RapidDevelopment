@@ -6,6 +6,6 @@ package com.kxiang.quick.net;
  * 请求返回状态号字段
  */
 
-public class RequestStateFields {
+public class NetFields {
 
 }

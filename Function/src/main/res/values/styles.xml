@@ -8,8 +8,54 @@
         <attr name="civ_border_overlay" format="boolean"/>
         <attr name="civ_fill_color" format="color"/>
     </declare-styleable>
+
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <!--CircleImageView属性定义区-->
+
+    <!--BaseStarBar属性定义区-->
+    <declare-styleable name="StarLikesView">
+        <attr name="starNumbers" format="integer"/>
+        <attr name="starSingleSize" format="dimension"/>
+        <attr name="starPadding" format="dimension"/>
+    </declare-styleable>
+    <!--StarLikesView属性定义区-->
+
+    <!--ComeBackMenuView属性定义区-->
+    <declare-styleable name="ComeBackMenuView">
+        <attr name="alphaStart" format="integer"/>
+        <attr name="alphaEnd" format="integer"/>
+        <attr name="moveMax" format="dimension"/>
+        <attr name="itemSize" format="dimension"/>
+        <attr name="itemCenterSize" format="dimension"/>
+        <attr name="starBoolean" format="boolean"/>
+        <attr name="radianStart" format="integer"/>
+        <attr name="radianEnd" format="integer"/>
+    </declare-styleable>
+    <!--ComeBackMenuView属性定义区-->
+
+    <declare-styleable name="CustomVolumControlBar">
+        <attr name="firstColor" format="color"/>
+        <attr name="secondColor" format="color"/>
+        <attr name="circleWidth" format="dimension"/>
+        <attr name="dotCount" format="integer"/>
+        <attr name="splitSize" format="integer"/>
+        <attr name="bg" format="reference"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" format="dimension"/>
+        <attr name="type">
+            <enum name="circle" value="0"/>
+            <enum name="round" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="DragRightViewLayout">
+        <attr name="singleShow" format="boolean"/>
+    </declare-styleable>
+
 
 </resources>

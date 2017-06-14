@@ -23,7 +23,7 @@
 
             <TextView
                 android:text="快速开发功能集合"
-                android:id="@+id/tv_title_name"
+                android:id="@+id/title_name"
                 android:textSize="19sp"
                 android:gravity="center"
                 android:textColor="@color/color_ffffff"

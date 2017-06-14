@@ -51,7 +51,7 @@ public class CalanderActivity extends BaseActivity implements View.OnClickListen
 
     public void initView() {
         initTitle();
-        tv_title_name.setText("日历控件");
+        title_name.setText("日历控件");
         tv_loop = (TextView) findViewById(R.id.tv_loop);
         tv_calendar = (TextView) findViewById(R.id.tv_calendar);
         cb_1 = (CheckBox) findViewById(R.id.cb_1);

@@ -19,7 +19,7 @@ import android.content.Context;
 import com.kexiang.function.utils.AppException;
 import com.kexiang.function.utils.LogUtils;
 import com.kxiang.quick.net.ApiNetworkAddressService;
-import com.kxiang.quick.net.RetrofitFactory;
+import com.kxiang.quick.net.BaseRetrofitFactory;
 import com.tencent.bugly.Bugly;
 
 
@@ -27,19 +27,18 @@ public class BaseApplication extends Application {
 
     protected ApiNetworkAddressService apiNetService;
     public static final String APP_ID = "72bdbd38c8"; // TODO 替换成bugly上注册的appid
+
     @Override
     public void onCreate() {
 //        MultiDex.install(this);
         LogUtils.initDebug();
-      //  CrashReport.initCrashReport(getApplicationContext(), APP_ID, false);
+        //  CrashReport.initCrashReport(getApplicationContext(), APP_ID, false);
         Bugly.init(getApplicationContext(), APP_ID, false);
         super.onCreate();
         context = this;
-        apiNetService = RetrofitFactory.getApiService();
         Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
 
     }
-
 
 
     private String userName;
@@ -53,12 +52,16 @@ public class BaseApplication extends Application {
     }
 
     private static BaseApplication context;
+
     public static BaseApplication getContext() {
         return context;
     }
 
 
     public ApiNetworkAddressService getApiNetService() {
+        if (apiNetService == null) {
+            apiNetService = BaseRetrofitFactory.getApiService();
+        }
         return apiNetService;
     }
 
@@ -67,7 +70,6 @@ public class BaseApplication extends Application {
         super.attachBaseContext(base);
 //        MultiDex.install(this);
     }
-
 
 
 }

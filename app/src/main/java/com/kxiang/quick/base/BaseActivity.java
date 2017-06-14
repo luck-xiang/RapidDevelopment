@@ -39,11 +39,18 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
      */
     protected BaseActivity thisActivity;
     protected CompositeDisposable disposable;
+    /**
+     * 过时，项目不用
+     */
+    @Deprecated
     protected TitleBarView title_bar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initStatusBarColor();
+        initStatusBar();
         if (!isTaskRoot()) {
             Intent intent = getIntent();
             String action = intent.getAction();
@@ -69,15 +76,28 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
     }
 
     /**
-     * 设置状态栏固定颜色颜色
+     * 如果不需要设置头部颜色或者需要改变头部颜色修改该函数
+     * 填上SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
      */
+    protected void initStatusBar() {
+        SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
+    }
+
+    /**
+     * 废弃
+     * 设置状态栏固定颜色颜色
+     * 重写这个方法可以改变状态栏颜色
+     */
+    @Deprecated
     protected void initStatusBarColor() {
         SystemBarTintSet.setStatusBarKITKATabove(this, R.color.color_f03e1b);
     }
 
     /**
+     * 废弃
      * 设置状态栏特定颜色
      */
+    @Deprecated
     protected void initStatusBarColor(int color) {
         SystemBarTintSet.setStatusBarKITKATabove(this, color);
     }
@@ -92,29 +112,51 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
         finish();
     }
 
-    protected ImageView iv_title_left;
-    protected TextView tv_title_name;
-    protected TextView tv_title_right;
+    protected ImageView title_left;
+    protected TextView title_name;
+    protected TextView title_right;
 
     //初始化title显示
     protected void initTitle() {
-        iv_title_left = (ImageView) findViewById(R.id.iv_title_left);
-        tv_title_name = (TextView) findViewById(R.id.tv_title_name);
-        tv_title_right = (TextView) findViewById(R.id.tv_title_right);
-        if (iv_title_left != null)
-            iv_title_left.setOnClickListener(new View.OnClickListener() {
+        title_left = (ImageView) findViewById(R.id.title_left);
+        title_name = (TextView) findViewById(R.id.title_name);
+        title_right = (TextView) findViewById(R.id.title_right);
+        if (title_left != null) {
+            View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    leftFinish();
+
+                    switch (v.getId()) {
+                        case R.id.title_left:
+                            leftFinish();
+                            break;
+                        case R.id.title_right:
+                            rightListener();
+                            break;
+
+                    }
                 }
-            });
+            };
+            title_left.setOnClickListener(onClickListener);
+            if (title_right != null)
+                title_right.setOnClickListener(onClickListener);
+        }
+
     }
 
+
     /**
-     * 如需操作左返回键执行该方法
+     * 如需操作title左边按键执行该方法
      */
     protected void leftFinish() {
         finish();
+    }
+
+    /**
+     * 如需操作title右边按键执行该方法
+     */
+    protected void rightListener() {
+
     }
 
     protected AlertDialog.Builder exceptionBuilder;
@@ -206,6 +248,11 @@ public abstract class BaseActivity extends AppCompatActivity implements TitleBar
     }
 
 
+    /**
+     * 屏蔽掉字体大小随系统改变而改变的特性，避免出现字体大小改变导致的布局错乱
+     *
+     * @return
+     */
     @Override
     public Resources getResources() {
         Resources res = super.getResources();

@@ -7,13 +7,16 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
+import com.kxiang.quick.news.bean.NewsContentBean;
 import com.kxiang.quick.news.fragment.NewsMainFragment;
 import com.nineoldandroids.view.ViewHelper;
 
 public class NewsMainActivity extends BaseActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +26,53 @@ public class NewsMainActivity extends BaseActivity {
         initView();
     }
 
+
+    public void addShoppingCart(NewsContentBean.ItemBean itemBean) {
+
+        int position = newsMainDataUitls.addShoppingCart(itemBean);
+        if (position == 0) {
+            tv_show.setText("");
+
+        }
+        else {
+            tv_show.setText("数量：" + position);
+        }
+    }
+
+    public void subShoppingCart(NewsContentBean.ItemBean itemBean) {
+
+
+        int position = newsMainDataUitls.subShoppingCart(itemBean);
+
+        if (position == 0) {
+            tv_show.setText("");
+
+        }
+        else {
+            tv_show.setText("数量：" + position);
+        }
+
+    }
+
+
+    NewsMainDataUitls newsMainDataUitls;
+
+    public NewsMainDataUitls getNewsMainDataUitls() {
+        return newsMainDataUitls;
+    }
+
+    private TextView tv_show;
+
     @Override
     protected void initView() {
+        newsMainDataUitls = new NewsMainDataUitls();
+        tv_show = (TextView) findViewById(R.id.tv_show);
         initDrawerLayout();
         initFragment();
     }
 
     private void initFragment() {
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fl_main, new NewsMainFragment())

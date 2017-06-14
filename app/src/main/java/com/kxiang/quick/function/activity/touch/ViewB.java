@@ -40,13 +40,13 @@ public class ViewB extends RelativeLayout {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         LogUtils.toE("ViewB", "onInterceptTouchEvent：" + ev.getAction());
 
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-
-            return true;
-        }
-        else if (ev.getAction() == MotionEvent.ACTION_UP) {
-
-        }
+//        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+//
+//            return true;
+//        }
+//        else if (ev.getAction() == MotionEvent.ACTION_UP) {
+//
+//        }
 
         return super.onInterceptTouchEvent(ev);
 //        try {
@@ -105,7 +105,6 @@ public class ViewB extends RelativeLayout {
 
 
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
             return true;
         }
         else if (event.getAction() == MotionEvent.ACTION_UP) {

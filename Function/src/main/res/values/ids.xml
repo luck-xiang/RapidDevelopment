@@ -4,4 +4,6 @@
     <item name="titlebar_left" type="id"/>
     <item name="tv_title" type="id"/>
     <item name="tv_header" type="id"/>
+    <item name="pl_header" type="id"/>
+    <item name="rlv_all" type="id"/>
 </resources>

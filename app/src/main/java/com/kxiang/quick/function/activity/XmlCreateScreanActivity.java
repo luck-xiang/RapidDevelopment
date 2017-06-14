@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.kexiang.function.view.own.star.StarLikesView;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
 
@@ -37,6 +38,17 @@ public class XmlCreateScreanActivity extends BaseActivity implements View.OnClic
      * 1280
      */
     private EditText et_y;
+    /**
+     * 星星加
+     */
+    private Button btn_add;
+    /**
+     * 星星减
+     */
+    private Button btn_sub;
+    private StarLikesView star_normal;
+    private StarLikesView star_scale;
+    private StarLikesView star_rotate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,29 @@ public class XmlCreateScreanActivity extends BaseActivity implements View.OnClic
         setContentView(R.layout.activity_xml_create_screan);
         initView();
         initStatusBarColor();
+//
+//        String URL_BASE = "http://c.3g.163.com/";
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(URL_BASE)
+//                .build();
+//        ApiNetworkAddressService apiService = retrofit.create(ApiNetworkAddressService.class);
+//        apiService
+//                .getNewsListTest("headline", "T1348647909107", 0)
+//                .enqueue(new Callback<ResponseBody>() {
+//                    @Override
+//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                        try {
+//                            LogUtils.toE("response","response:"+response.body().string());
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//                    }
+//                });
     }
 
     @Override
@@ -55,6 +90,15 @@ public class XmlCreateScreanActivity extends BaseActivity implements View.OnClic
         btn_sure.setOnClickListener(this);
         et_x = (EditText) findViewById(R.id.et_x);
         et_y = (EditText) findViewById(R.id.et_y);
+        btn_add = (Button) findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(this);
+        btn_sub = (Button) findViewById(R.id.btn_sub);
+        btn_sub.setOnClickListener(this);
+        star_normal = (StarLikesView) findViewById(R.id.star_normal);
+        star_scale = (StarLikesView) findViewById(R.id.star_scale);
+        star_rotate = (StarLikesView) findViewById(R.id.star_rotate);
+        star_scale.setStytle(StarLikesView.SCALE);
+        star_rotate.setStytle(StarLikesView.ROTATE);
     }
 
     @Override
@@ -65,6 +109,16 @@ public class XmlCreateScreanActivity extends BaseActivity implements View.OnClic
                         Float.parseFloat(et_x.getText().toString()), "lay_x.xml");
                 createXml("y", Float.parseFloat(et_ydp.getText().toString()),
                         Float.parseFloat(et_y.getText().toString()), "lay_y.xml");
+                break;
+            case R.id.btn_add:
+                star_normal.addStar();
+                star_scale.addStar();
+                star_rotate.addStar();
+                break;
+            case R.id.btn_sub:
+                star_normal.subStar();
+                star_scale.subStar();
+                star_rotate.subStar();
                 break;
         }
     }

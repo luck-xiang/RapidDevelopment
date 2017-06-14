@@ -56,6 +56,7 @@ public class BellCircleView extends View {
 
     /**
      * 十二小时制度
+     *
      * @param hour：时
      * @param minute：分
      * @param second：秒
@@ -107,8 +108,6 @@ public class BellCircleView extends View {
         canvas.restore();
 
 
-
-
         //时针
         canvas.save();
         canvas.translate(radius, radius);
@@ -142,12 +141,11 @@ public class BellCircleView extends View {
 
         //秒针
         canvas.save();
-        canvas.translate(radius*0.8f, radius*0.8f);
-        canvas.rotate(360 / 60 * second,radius*0.2f, radius*0.2f);
+        canvas.translate(radius * 0.8f, radius * 0.8f);
+        canvas.rotate(360 / 60 * second, radius * 0.2f, radius * 0.2f);
         mPaint.setStrokeWidth(strokeWidth * 0.5f);
-        canvas.drawLine(radius*0.2f, 0,radius*0.2f,radius ,mPaint);
+        canvas.drawLine(radius * 0.2f, 0, radius * 0.2f, radius, mPaint);
         canvas.restore();
-
 
 
         mPaint.setStyle(Paint.Style.FILL);
@@ -164,6 +162,8 @@ public class BellCircleView extends View {
         final int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         final int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         final int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+//        生成测量工具
+//        int heightMeasureSpecTest = MeasureSpec.makeMeasureSpec(heightSize, heightMode);
 
         if (widthMode == MeasureSpec.AT_MOST) {
             //相当于我们设置为wrap_content

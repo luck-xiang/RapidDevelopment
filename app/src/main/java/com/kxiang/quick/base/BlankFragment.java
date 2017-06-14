@@ -31,7 +31,7 @@ public class BlankFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public BlankFragment() {
-        // Required empty public constructor
+        // Required star_empty public constructor
     }
 
     /**

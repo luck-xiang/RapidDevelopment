@@ -23,13 +23,21 @@ public class RefreshLoadingAdapter extends BaseRecycleRefreshOrLoadingMoreAdapte
     }
 
     @Override
-    protected void onBindViewHolderLoadingMore(RecyclerView.ViewHolder holder, int position) {
+    protected void onBindViewHolderLoadingMore(RecyclerView.ViewHolder holder, final int position) {
         BaseHolder baseHolder = (BaseHolder) holder;
         baseHolder.tv_data.setText(list.get(position));
+//        baseHolder. tv_data.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                LogUtils.toE("onTouch", "BaseHolder:" +position+":"+ event.getAction());
+//                return true;
+//            }
+//        });
     }
 
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolderLoadingMore(ViewGroup parent, int viewType) {
+
         return new BaseHolder(inflater.inflate(R.layout.adapter_refresh_loading, parent, false));
     }
 
@@ -38,9 +46,11 @@ public class RefreshLoadingAdapter extends BaseRecycleRefreshOrLoadingMoreAdapte
 
         TextView tv_data;
 
+
         public BaseHolder(View itemView) {
             super(itemView);
             tv_data = (TextView) itemView.findViewById(R.id.tv_data);
+
         }
     }
 

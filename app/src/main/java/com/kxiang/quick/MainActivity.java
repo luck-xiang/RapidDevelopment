@@ -28,10 +28,12 @@ import com.kxiang.quick.bean.ClassBean;
 import com.kxiang.quick.bean.JsonBean;
 import com.kxiang.quick.dbtest.DBTestActivity;
 import com.kxiang.quick.function.activity.CalanderActivity;
+import com.kxiang.quick.function.activity.ComeBackMenuViewActivity;
 import com.kxiang.quick.function.activity.DownLoadActivity;
 import com.kxiang.quick.function.activity.HandleActivity;
 import com.kxiang.quick.function.activity.KeyboardActivity;
 import com.kxiang.quick.function.activity.KeyboardCustomActivity;
+import com.kxiang.quick.function.activity.LeftDrawerLayoutActivity;
 import com.kxiang.quick.function.activity.MaterialMainActivity;
 import com.kxiang.quick.function.activity.MemoryActivity;
 import com.kxiang.quick.function.activity.RadioCheckActivity;
@@ -41,6 +43,8 @@ import com.kxiang.quick.function.activity.SQLiteActivity;
 import com.kxiang.quick.function.activity.ScreenActivity;
 import com.kxiang.quick.function.activity.SmallToolsActivity;
 import com.kxiang.quick.function.activity.SocketActivity;
+import com.kxiang.quick.function.activity.StarPraiseActivity;
+import com.kxiang.quick.function.activity.ViewDragHelperActivity;
 import com.kxiang.quick.function.activity.XmlCreateScreanActivity;
 import com.kxiang.quick.function.activity.own.BaseViewActivity;
 import com.kxiang.quick.function.activity.own.OwnViewActivity;
@@ -48,6 +52,7 @@ import com.kxiang.quick.function.activity.own.ScrollTestActivity;
 import com.kxiang.quick.function.activity.own.View1Activity;
 import com.kxiang.quick.function.activity.start.AActivity;
 import com.kxiang.quick.function.activity.touch.TouchActivity;
+import com.kxiang.quick.function.activity.wipemenu.MainCstActivity;
 import com.kxiang.quick.function.adapter.MainAdapter;
 import com.kxiang.quick.news.NewsMainActivity;
 import com.kxiang.quick.socket.ClientActivity;
@@ -75,6 +80,7 @@ public class MainActivity extends BaseActivity {
         initBanner();
         TestTools();
         loadUpgradeInfo();
+
 
 
         String json = "{\"bean\":[{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":\"10000000010001\",\"relative\":\"父亲\",\"name\":\"微信\"}]}";
@@ -165,7 +171,7 @@ public class MainActivity extends BaseActivity {
         rlv_all = (RecyclerView) findViewById(R.id.rlv_all);
         classBeanList = new ArrayList<>();
         addData();
-        allAdapter = new MainAdapter(this, classBeanList);
+        allAdapter = new MainAdapter(this, classBeanList, rlv_all);
 
         rlv_all.setLayoutManager(new LinearLayoutManager(this));
         rlv_all.addItemDecoration(
@@ -182,12 +188,18 @@ public class MainActivity extends BaseActivity {
         });
         rlv_all.setAdapter(allAdapter);
 
+
     }
 
     private void addData() {
 
 //        ScrollView
         LogUtils.toELogger("addData", "你好呀");
+        classBeanList.add(getClassBean("侧滑删除", MainCstActivity.class));
+        classBeanList.add(getClassBean("LeftDrawerLayout测试", LeftDrawerLayoutActivity.class));
+        classBeanList.add(getClassBean("ViewDragHelper测试", ViewDragHelperActivity.class));
+        classBeanList.add(getClassBean("收缩菜单", ComeBackMenuViewActivity.class));
+        classBeanList.add(getClassBean("星星点赞和VelocityTracker测试", StarPraiseActivity.class));
         classBeanList.add(getClassBean("xml生成测试", XmlCreateScreanActivity.class));
         classBeanList.add(getClassBean("scroller测试", View1Activity.class));
         classBeanList.add(getClassBean("滑动冲突测试", ScrollTestActivity.class));

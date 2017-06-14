@@ -44,6 +44,15 @@ public interface ApiNetworkAddressService {
             @Path("startPage") int startPage
     );
 
+     @Headers(CACHE_CONTROL_NETWORK)
+    @GET("nc/article/{type}/{id}/{startPage}-20.html")
+    Call<ResponseBody> getNewsListTest(
+            @Path("type") String type,
+            @Path("id") String id,
+            @Path("startPage") int startPage
+    );
+
+
 
     /**
      * 获取新闻列表

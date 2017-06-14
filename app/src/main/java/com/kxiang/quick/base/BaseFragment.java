@@ -1,5 +1,7 @@
 package com.kxiang.quick.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,34 +15,63 @@ import com.kxiang.quick.R;
  * 创建时间:2017/3/30 10:20
  */
 
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        onActivityCreatedListener(savedInstanceState);
+    }
 
+    protected abstract void onActivityCreatedListener(Bundle savedInstanceState);
 
-    protected ImageView iv_title_left;
-    protected TextView tv_title_name;
-    protected TextView tv_title_right;
+    protected ImageView title_left;
+    protected TextView title_name;
+    protected TextView title_right;
 
     //初始化title显示
     protected void initTitle() {
-        iv_title_left = (ImageView) getView().findViewById(R.id.iv_title_left);
-        tv_title_name = (TextView) getView().findViewById(R.id.tv_title_name);
-        tv_title_right = (TextView) getView().findViewById(R.id.tv_title_right);
-        if (iv_title_left != null)
-            iv_title_left.setOnClickListener(new View.OnClickListener() {
+        title_left = (ImageView) getView().findViewById(R.id.title_left);
+        title_name = (TextView) getView().findViewById(R.id.title_name);
+        title_right = (TextView) getView().findViewById(R.id.title_right);
+        if (title_left != null) {
+            View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    leftFinish();
+
+                    switch (v.getId()) {
+                        case R.id.title_left:
+                            leftFinish();
+                            break;
+                        case R.id.title_right:
+                            rightListener();
+                            break;
+
+                    }
                 }
-            });
+            };
+            title_left.setOnClickListener(onClickListener);
+            if (title_right != null)
+                title_right.setOnClickListener(onClickListener);
+        }
+
     }
 
+
     /**
-     * 如需操作左返回键执行该方法
+     * 如需操作title左边按键执行该方法
      */
     protected void leftFinish() {
         getActivity().finish();
     }
+
+    /**
+     * 如需操作title右边按键执行该方法
+     */
+    protected void rightListener() {
+
+    }
+
 
 }

@@ -59,7 +59,12 @@ public class ScreenUtils {
         return dm.heightPixels;
     }
 
-
+    /**
+     * 获得状态栏的高度
+     *
+     * @param context
+     * @return
+     */
     public static int getStatusBarHeight(Context context) {
         Class<?> c = null;
 

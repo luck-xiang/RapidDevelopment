@@ -4,22 +4,22 @@ package com.kxiang.quick.news.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kexiang.function.utils.LogUtils;
+import com.kexiang.function.view.recycleview.OnRecycleItemClickListener;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseRefreshLoadingFragment;
-import com.kxiang.quick.function.adapter.RefreshLoadingAdapter;
+import com.kxiang.quick.function.adapter.NewsAdapter;
 import com.kxiang.quick.net.BaseRetrofit;
+import com.kxiang.quick.news.NewsMainActivity;
+import com.kxiang.quick.news.bean.NewsContentBean;
 import com.kxiang.quick.news.bean.NewsInfo;
 import com.kxiang.quick.utils.ApplicationUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -38,9 +38,25 @@ public class NewsListFragment extends BaseRefreshLoadingFragment {
 
 
     public NewsListFragment() {
-        // Required empty public constructor
+        // Required star_empty public constructor
     }
 
+    public static NewsListFragment newInstance(int position) {
+        NewsListFragment fragment = new NewsListFragment();
+        Bundle a = new Bundle();
+        a.putInt("item", position);
+        fragment.setArguments(a);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            position = getArguments().getInt("item");
+
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,25 +65,52 @@ public class NewsListFragment extends BaseRefreshLoadingFragment {
         return inflater.inflate(R.layout.fragment_news_list, container, false);
     }
 
+
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initRecycleView();
+    protected void onActivityCreatedListener(Bundle savedInstanceState) {
         netWork();
     }
 
     protected RecyclerView rlv_all;
-    RefreshLoadingAdapter recycleAdapter;
-    List<String> recycleData;
-    private int position = 1;
+    NewsAdapter recycleAdapter;
+    List<NewsContentBean.ItemBean> recycleData;
+    private int position = 0;
 
-    private void initRecycleView() {
-        recycleData = new ArrayList<>();
+
+    @Override
+    public void initRecycleView() {
+        recycleData = ((NewsMainActivity) getActivity())
+                .getNewsMainDataUitls()
+                .getNewsContentBean()
+                .getGroupBeen()
+                .get(position)
+                .getItemBean();
         rlv_all = (RecyclerView) getView().findViewById(R.id.rlv_all);
-        recycleAdapter = new RefreshLoadingAdapter(getContext(), recycleData, rlv_all);
+        recycleAdapter = new NewsAdapter(getContext(), recycleData, rlv_all);
+        setRecycle(recycleAdapter,null,null);
         initRecycle(recycleAdapter);
-        rlv_all.setLayoutManager(new LinearLayoutManager(getContext()));
-        rlv_all.setAdapter(recycleAdapter);
+        recycleAdapter.setOnRecycleItemSelectListener(new OnRecycleItemClickListener() {
+            @Override
+            public void OnRecycleItemSelect(View view, int position) {
+                switch (view.getId()) {
+                    case R.id.tv_add:
+                        recycleData.get(position)
+                                .setNumbers(recycleData.get(position).getNumbers() + 1);
+                        ((NewsMainActivity) getActivity()).addShoppingCart(recycleData.get(position));
+                        break;
+                    case R.id.tv_sub:
+                        if (recycleData.get(position).getNumbers() >= 1) {
+                            recycleData.get(position)
+                                    .setNumbers(recycleData.get(position).getNumbers() - 1);
+                            ((NewsMainActivity) getActivity())
+                                    .subShoppingCart(recycleData.get(position));
+                        }
+
+                        break;
+                }
+                recycleAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 
@@ -84,53 +127,53 @@ public class NewsListFragment extends BaseRefreshLoadingFragment {
     @Override
     protected void onRefreshLoadingListener(int type) {
 
-        if (type == BaseRefreshLoadingFragment.REFRESH) {
-            pl_header.postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    initRefreshAndLoading();
-                    recycleData.clear();
-
-                    for (int i = 0; i < 20; i++) {
-                        recycleData.add("数据:" + position);
-                        position++;
-                    }
-                    pl_header.stopRefresh();
-                    if (pageSize == PAGE_SIZE) {
-                        recycleAdapter.initLoading();
-                    }
-                    else {
-                        recycleAdapter.noMoreData();
-                    }
-                    recycleAdapter.notifyDataSetChanged();
-
-                }
-            }, 5000);
-        }
-        else if (type == BaseRefreshLoadingFragment.LOADING) {
-            rlv_all.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    initRefreshAndLoading();
-                    Log.e("下拉加载", "结束");
-                    if (pageSize != PAGE_SIZE) {
-                        recycleAdapter.noMoreData();
-                    }
-                    else {
-
-                        recycleAdapter.initLoading();
-                        for (int i = 0; i < 5; i++) {
-                            recycleData.add("数据:" + position);
-                            position++;
-                        }
-                    }
-                    recycleAdapter.notifyDataSetChanged();
-
-                }
-            }, 2000);
-        }
+//        if (type == BaseRefreshLoadingFragment.REFRESH) {
+//            pl_header.postDelayed(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    initRefreshAndLoading();
+//                    recycleData.clear();
+//
+//                    for (int i = 0; i < 20; i++) {
+//                        recycleData.add("数据:" + position);
+//                        position++;
+//                    }
+//                    pl_header.stopRefresh();
+//                    if (pageSize == PAGE_SIZE) {
+//                        recycleAdapter.initLoading();
+//                    }
+//                    else {
+//                        recycleAdapter.noMoreData();
+//                    }
+//                    recycleAdapter.notifyDataSetChanged();
+//
+//                }
+//            }, 5000);
+//        }
+//        else if (type == BaseRefreshLoadingFragment.LOADING) {
+//            rlv_all.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    initRefreshAndLoading();
+//                    Log.e("下拉加载", "结束");
+//                    if (pageSize != PAGE_SIZE) {
+//                        recycleAdapter.noMoreData();
+//                    }
+//                    else {
+//
+//                        recycleAdapter.initLoading();
+//                        for (int i = 0; i < 5; i++) {
+//                            recycleData.add("数据:" + position);
+//                            position++;
+//                        }
+//                    }
+//                    recycleAdapter.notifyDataSetChanged();
+//
+//                }
+//            }, 2000);
+//        }
 
     }
 
@@ -154,7 +197,7 @@ public class NewsListFragment extends BaseRefreshLoadingFragment {
                                 .getNewsList(type, "T1348647909107", 0)
                                 .execute();
 
-                        LogUtils.toJsonString("news",response.body());
+                        LogUtils.toJsonString("news", response.body());
 
                     }
                 })

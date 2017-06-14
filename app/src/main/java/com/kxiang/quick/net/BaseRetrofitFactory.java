@@ -5,12 +5,11 @@ package com.kxiang.quick.net;
  * 创建人:kexiang
  * 创建时间:2016/9/28 15:30
  */
-public class RetrofitFactory {
-    protected static final Object monitor = new Object();
+public class BaseRetrofitFactory {
     private static ApiNetworkAddressService apiService;
 
     public static ApiNetworkAddressService getApiService() {
-        synchronized (monitor) {
+        synchronized (BaseRetrofitFactory.class) {
             if (apiService == null) {
                 apiService = new BaseRetrofit().getApiService();
             }

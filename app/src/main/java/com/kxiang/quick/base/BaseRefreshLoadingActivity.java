@@ -11,7 +11,7 @@ import com.ybao.pullrefreshview.layout.BaseHeaderView;
  * 创建时间:2017/3/20 17:19
  */
 
-public abstract class BaseRefreshLoadingActivity extends BaseActivity {
+public abstract class BaseRefreshLoadingActivity extends BaseRecycleViewActivity {
 
     protected int PAGE_SIZE = 20;
     protected int pageSize = 20;
@@ -26,10 +26,16 @@ public abstract class BaseRefreshLoadingActivity extends BaseActivity {
         refreshStatus = true;
     }
 
+    /**
+     * 阻止下拉刷新
+     */
     protected void stopRefresh() {
         refreshStatus = false;
     }
 
+    /**
+     * 阻止上拉加载更多
+     */
     protected void stopLoadingMore() {
         loadingMoreStatus = false;
     }
@@ -37,11 +43,17 @@ public abstract class BaseRefreshLoadingActivity extends BaseActivity {
 
     protected BaseHeaderView pl_header;
 
+    /**
+     * 初始化刷新
+     *
+     * @param adapter
+     */
     protected void initRecycle(BaseRecycleRefreshOrLoadingMoreAdapter adapter) {
         stopLoadingMore();
         pl_header = (BaseHeaderView) findViewById(R.id.pl_header);
         setRefresh();
         setLoading(adapter);
+        //开始的时候自动刷新
         pl_header.post(new Runnable() {
             @Override
             public void run() {
@@ -50,6 +62,9 @@ public abstract class BaseRefreshLoadingActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 初始化下拉刷新
+     */
     protected void setRefresh() {
         pl_header.setOnRefreshListener(new BaseHeaderView.OnRefreshListener() {
             @Override
@@ -65,8 +80,12 @@ public abstract class BaseRefreshLoadingActivity extends BaseActivity {
 
             }
         });
+
     }
 
+    /**
+     * 初始上拉加载更多
+     */
     protected void setLoading(final BaseRecycleRefreshOrLoadingMoreAdapter adapter) {
 
         adapter.setOnLoadingMoreListener(new RefreshLoadingAdapter.OnLoadingMoreListener() {
@@ -82,11 +101,17 @@ public abstract class BaseRefreshLoadingActivity extends BaseActivity {
                     adapter.initLoading();
                 }
 
-
             }
         });
     }
 
 
+    /**
+     * 状态返回
+     * REFRESH = 1，下拉刷新;
+     * LOADING = 2，上拉加载更多;
+     *
+     * @param type
+     */
     protected abstract void onRefreshLoadingListener(int type);
 }

@@ -150,6 +150,16 @@
         </activity>
         <activity android:name=".function.activity.XmlCreateScreanActivity">
         </activity>
+        <activity android:name=".function.activity.StarPraiseActivity">
+        </activity>
+        <activity android:name=".function.activity.ComeBackMenuViewActivity">
+        </activity>
+        <activity android:name=".function.activity.ViewDragHelperActivity">
+        </activity>
+        <activity android:name=".function.activity.LeftDrawerLayoutActivity">
+        </activity>
+        <activity android:name=".function.activity.wipemenu.MainCstActivity">
+        </activity>
     </application>
 
 </manifest>

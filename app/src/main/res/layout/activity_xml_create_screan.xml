@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_xml_create_screan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,12 +56,74 @@
     <Button
         android:id="@+id/btn_sure"
         android:text="生成"
-        android:textColor="@color/color_ffffff"
+        android:textColor="@color/color_f8a899"
         android:layout_marginRight="@dimen/x80"
         android:layout_marginLeft="@dimen/x80"
         android:layout_marginTop="@dimen/x20"
-        android:background="@drawable/btn_corners_f8a899_fa4672"
+        android:background="@drawable/layer_gray_corners"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="星星加"
+        android:id="@+id/btn_add"
+        android:textColor="@color/color_f8a899"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/layer_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="星星减"
+        android:id="@+id/btn_sub"
+        android:textColor="@color/color_f8a899"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/layer_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <com.kexiang.function.view.own.star.StarLikesView
+        android:id="@+id/star_normal"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:starNumbers="6"
+        app:starPadding="20dp"
+        app:starSingleSize="30dp"
+        />
+
+    <com.kexiang.function.view.own.star.StarLikesView
+        android:id="@+id/star_scale"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:starNumbers="6"
+        app:starPadding="20dp"
+        app:starSingleSize="30dp"
+        />
+
+    <com.kexiang.function.view.own.star.StarLikesView
+        android:id="@+id/star_rotate"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:starNumbers="6"
+        app:starPadding="20dp"
+        app:starSingleSize="30dp"
+        />
+
+
+    <com.kexiang.function.view.own.normal.RedPointView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<com.kexiang.function.view.own.normal.XfermodeView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
 
 </LinearLayout>
