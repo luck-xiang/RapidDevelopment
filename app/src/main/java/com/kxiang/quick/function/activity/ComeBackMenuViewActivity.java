@@ -1,8 +1,11 @@
 package com.kxiang.quick.function.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.kexiang.function.view.own.ComeBackMenuView;
 import com.kxiang.quick.R;
@@ -52,6 +55,12 @@ public class ComeBackMenuViewActivity extends BaseActivity implements View.OnCli
                 come_back_menu.starAlpha();
                 break;
             case R.id.btn_sub:
+                Toast toast = new Toast(this);
+                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View child = inflater.inflate(R.layout.fun_title_back_bar, null);
+                toast.setView(child);
+                toast.show();
+//                Toast.makeText(this,R.layout.activity_a,Toast.LENGTH_SHORT).show();
                 break;
         }
     }

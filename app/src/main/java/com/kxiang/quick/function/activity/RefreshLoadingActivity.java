@@ -87,7 +87,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
                     else {
                         recycleAdapter.noMoreData();
                     }
-                    recycleAdapter.notifyDataSetChanged();
+                    recycleAdapter.notifyData();
 
                 }
             }, 5000);
@@ -109,7 +109,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
                             position++;
                         }
                     }
-                    recycleAdapter.notifyDataSetChanged();
+                    recycleAdapter.notifyData();
 
                 }
             }, 2000);
@@ -189,7 +189,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
 //                            recycleAdapter.initLoading();
 //                        }
 //
-//                        recycleAdapter.notifyDataSetChanged();
+//                        recycleAdapter.notifyData();
 //                        LogUtils.toE("recycleData", "recycleData:" + recycleData.size());
 //
 //                    }
@@ -238,7 +238,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
 //                            else {
 //                                recycleAdapter.noMoreData();
 //                            }
-//                            recycleAdapter.notifyDataSetChanged();
+//                            recycleAdapter.notifyData();
 //
 //                        }
 //                    }, 5000);
@@ -277,7 +277,7 @@ public class RefreshLoadingActivity extends BaseRefreshLoadingActivity implement
 //                                    recycleData.add("数据:" + position);
 //                                    position++;
 //                                }
-//                                recycleAdapter.notifyDataSetChanged();
+//                                recycleAdapter.notifyData();
 //                            }
 //
 //

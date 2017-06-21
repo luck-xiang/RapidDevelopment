@@ -46,6 +46,7 @@ public class DragRightViewLayout extends ViewGroup
     private void initType(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DragRightViewLayout);
 
+        //单个滑动，不受外部影响
         if (a.getBoolean(R.styleable.DragRightViewLayout_singleShow, false)) {
             setSingleShow();
         }
@@ -429,6 +430,8 @@ public class DragRightViewLayout extends ViewGroup
         for (int i = 0; i < getChildCount(); i++) {
             View child = this.getChildAt(i);
 
+            ViewGroup.LayoutParams layoutParams=child.getLayoutParams();
+
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
 
         }
@@ -439,6 +442,7 @@ public class DragRightViewLayout extends ViewGroup
         else if (widthMode == MeasureSpec.EXACTLY) {
             //相当于我们设置为match_parent或者为一个具体的值
         }
+
     }
 
 

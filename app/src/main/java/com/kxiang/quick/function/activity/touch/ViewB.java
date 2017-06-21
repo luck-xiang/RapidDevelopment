@@ -32,7 +32,7 @@ public class ViewB extends RelativeLayout {
         LogUtils.toE("ViewB", "dispatchTouchEvent：" + ev.getAction());
 
         return super.dispatchTouchEvent(ev);
-        //return false;
+//        return true;
     }
 
 
@@ -104,17 +104,17 @@ public class ViewB extends RelativeLayout {
 //        }
 
 
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            return true;
-        }
-        else if (event.getAction() == MotionEvent.ACTION_UP) {
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            return true;
+//        }
+//        else if (event.getAction() == MotionEvent.ACTION_UP) {
+//
+//        }
 
-        }
 
+//        return super.onTouchEvent(event);
 
         return super.onTouchEvent(event);
-
-        //        return super.onTouchEvent(event);
 //        return true;
     }
 }

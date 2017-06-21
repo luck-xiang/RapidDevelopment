@@ -8,6 +8,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,6 +44,7 @@ import com.kxiang.quick.function.activity.RxActivity;
 import com.kxiang.quick.function.activity.SQLiteActivity;
 import com.kxiang.quick.function.activity.ScreenActivity;
 import com.kxiang.quick.function.activity.SmallToolsActivity;
+import com.kxiang.quick.function.activity.SnowViewActivity;
 import com.kxiang.quick.function.activity.SocketActivity;
 import com.kxiang.quick.function.activity.StarPraiseActivity;
 import com.kxiang.quick.function.activity.ViewDragHelperActivity;
@@ -69,6 +72,14 @@ public class MainActivity extends BaseActivity {
 
     String s;
 
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +92,7 @@ public class MainActivity extends BaseActivity {
         TestTools();
         loadUpgradeInfo();
 
+        LogUtils.toE("SnowViewActivity", "SnowViewActivity:" + Thread.currentThread().getName());
 
 
         String json = "{\"bean\":[{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":\"10000000010001\",\"relative\":\"父亲\",\"name\":\"微信\"}]}";
@@ -189,12 +201,14 @@ public class MainActivity extends BaseActivity {
         rlv_all.setAdapter(allAdapter);
 
 
+//        getMainLooper().quit();
     }
 
     private void addData() {
 
 //        ScrollView
-        LogUtils.toELogger("addData", "你好呀");
+        LogUtils.toELogger("test", "你好呀");
+        classBeanList.add(getClassBean("飘雪", SnowViewActivity.class));
         classBeanList.add(getClassBean("侧滑删除", MainCstActivity.class));
         classBeanList.add(getClassBean("LeftDrawerLayout测试", LeftDrawerLayoutActivity.class));
         classBeanList.add(getClassBean("ViewDragHelper测试", ViewDragHelperActivity.class));

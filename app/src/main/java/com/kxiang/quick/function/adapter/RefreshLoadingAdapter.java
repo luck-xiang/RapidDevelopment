@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.kexiang.function.view.own.DragRightViewLayout;
+import com.kexiang.function.view.own.DragRightViewUtils;
 import com.kexiang.function.view.recycleview.BaseRecycleRefreshOrLoadingMoreAdapter;
 import com.kxiang.quick.R;
 
@@ -18,8 +20,12 @@ import java.util.List;
  */
 
 public class RefreshLoadingAdapter extends BaseRecycleRefreshOrLoadingMoreAdapter<String> {
+
+    DragRightViewUtils dragRightViewUtils;
+
     public RefreshLoadingAdapter(Context context, List<String> list, RecyclerView rlv_all) {
         super(context, list, rlv_all);
+        dragRightViewUtils = new DragRightViewUtils();
     }
 
     @Override
@@ -35,6 +41,12 @@ public class RefreshLoadingAdapter extends BaseRecycleRefreshOrLoadingMoreAdapte
 //        });
     }
 
+    public void notifyData() {
+        if (dragRightViewUtils.getShowItem() != null)
+            dragRightViewUtils.getShowItem().delete();
+        notifyDataSetChanged();
+    }
+
     @Override
     protected RecyclerView.ViewHolder onCreateViewHolderLoadingMore(ViewGroup parent, int viewType) {
 
@@ -45,11 +57,14 @@ public class RefreshLoadingAdapter extends BaseRecycleRefreshOrLoadingMoreAdapte
     public class BaseHolder extends RecyclerView.ViewHolder {
 
         TextView tv_data;
+        DragRightViewLayout drag_right;
 
 
         public BaseHolder(View itemView) {
             super(itemView);
             tv_data = (TextView) itemView.findViewById(R.id.tv_data);
+            drag_right = (DragRightViewLayout) itemView.findViewById(R.id.drag_right);
+            drag_right.setSingleShow(dragRightViewUtils);
 
         }
     }

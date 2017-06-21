@@ -52,8 +52,8 @@ public class ViewA extends RelativeLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev){
         LogUtils.toE("ViewA", "onInterceptTouchEvent："+ev.getAction());
-       return super.onInterceptTouchEvent(ev);
-//        return true;
+//       return super.onInterceptTouchEvent(ev);
+        return true;
     }
 
     /**
@@ -66,8 +66,8 @@ public class ViewA extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         LogUtils.toE("ViewA", "onTouchEvent："+event.getAction());
-       return super.onTouchEvent(event);
-//        return true;
+//       return super.onTouchEvent(event);
+        return true;
     }
 
     @Override
@@ -77,6 +77,7 @@ public class ViewA extends RelativeLayout {
 
     @Override
     public void computeScroll() {
+
 
 
         super.computeScroll();

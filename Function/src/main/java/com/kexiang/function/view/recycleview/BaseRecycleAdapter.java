@@ -37,4 +37,9 @@ public abstract class BaseRecycleAdapter<T> extends RecyclerView.Adapter {
     public List<T> getList() {
         return list;
     }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
 }

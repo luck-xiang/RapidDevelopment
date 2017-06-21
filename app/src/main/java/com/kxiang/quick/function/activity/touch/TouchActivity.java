@@ -33,4 +33,5 @@ public class TouchActivity extends BaseActivity {
         LogUtils.toE("TouchActivity","onTouchEvent:"+event.getAction());
         return super.onTouchEvent(event);
     }
+
 }

@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.kexiang.function.utils.LogUtils;
 import com.kxiang.quick.R;
 import com.kxiang.quick.function.activity.wipemenu.utils.CommonAdapter;
 import com.kxiang.quick.function.activity.wipemenu.utils.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class MainCstActivity extends AppCompatActivity {
@@ -40,6 +40,7 @@ public class MainCstActivity extends AppCompatActivity {
 
             }
         });
+        LogUtils.toE("SnowViewActivity","SnowViewActivity:"+Thread.currentThread().getName());
     }
 
     private void initDatas() {
@@ -47,5 +48,6 @@ public class MainCstActivity extends AppCompatActivity {
         for (int i = 0; i < 100; i++) {
             mDatas.add(new SwipeBean("" + i));
         }
+
     }
 }

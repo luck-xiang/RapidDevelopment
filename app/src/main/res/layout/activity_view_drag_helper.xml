@@ -43,7 +43,8 @@
 
     <com.kexiang.function.view.own.DragRightViewLayout
         android:layout_width="300dp"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
+
         >
 
         <TextView
