@@ -162,7 +162,8 @@
         </activity>
         <activity android:name=".function.activity.SnowViewActivity">
         </activity>
-
+        <activity android:name=".function.activity.CycleViewActivity">
+        </activity>
     </application>
 
 </manifest>

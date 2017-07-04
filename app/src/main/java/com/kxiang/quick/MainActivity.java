@@ -19,7 +19,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.google.gson.Gson;
 import com.kexiang.function.utils.AppVersionUtils;
 import com.kexiang.function.utils.LogUtils;
 import com.kexiang.function.view.banner.BannersView;
@@ -27,10 +26,10 @@ import com.kexiang.function.view.recycleview.OnRecycleItemClickListener;
 import com.kexiang.function.view.recycleview.RecycleDividerItemLinear;
 import com.kxiang.quick.base.BaseActivity;
 import com.kxiang.quick.bean.ClassBean;
-import com.kxiang.quick.bean.JsonBean;
 import com.kxiang.quick.dbtest.DBTestActivity;
 import com.kxiang.quick.function.activity.CalanderActivity;
 import com.kxiang.quick.function.activity.ComeBackMenuViewActivity;
+import com.kxiang.quick.function.activity.CycleViewActivity;
 import com.kxiang.quick.function.activity.DownLoadActivity;
 import com.kxiang.quick.function.activity.HandleActivity;
 import com.kxiang.quick.function.activity.KeyboardActivity;
@@ -92,16 +91,8 @@ public class MainActivity extends BaseActivity {
         TestTools();
         loadUpgradeInfo();
 
+
         LogUtils.toE("SnowViewActivity", "SnowViewActivity:" + Thread.currentThread().getName());
-
-
-        String json = "{\"bean\":[{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":null,\"relative\":\"\",\"name\":\"\"},{\"phone_num\":\"10000000010001\",\"relative\":\"父亲\",\"name\":\"微信\"}]}";
-
-        Gson gson = new Gson();
-        JsonBean jsonBean = gson.fromJson(json, JsonBean.class);
-        LogUtils.toJsonString("json", jsonBean);
-
-
         LogUtils.toE("Pixels", "heightPixels:" + getResources().getDisplayMetrics().heightPixels);
         LogUtils.toE("Pixels", "widthPixels:" + getResources().getDisplayMetrics().widthPixels);
     }
@@ -207,11 +198,16 @@ public class MainActivity extends BaseActivity {
     private void addData() {
 
 //        ScrollView
-        LogUtils.toELogger("test", "你好呀");
+
+
+
+
+        classBeanList.add(getClassBean("竖直滚动测试", CycleViewActivity.class));
         classBeanList.add(getClassBean("飘雪", SnowViewActivity.class));
-        classBeanList.add(getClassBean("侧滑删除", MainCstActivity.class));
-        classBeanList.add(getClassBean("LeftDrawerLayout测试", LeftDrawerLayoutActivity.class));
-        classBeanList.add(getClassBean("ViewDragHelper测试", ViewDragHelperActivity.class));
+        classBeanList.add(getClassBean("开源侧滑删除", MainCstActivity.class));
+        classBeanList.add(getClassBean("ViewDragHelper和GestureDetector测试",
+                LeftDrawerLayoutActivity.class));
+        classBeanList.add(getClassBean("自定义侧滑删除测试", ViewDragHelperActivity.class));
         classBeanList.add(getClassBean("收缩菜单", ComeBackMenuViewActivity.class));
         classBeanList.add(getClassBean("星星点赞和VelocityTracker测试", StarPraiseActivity.class));
         classBeanList.add(getClassBean("xml生成测试", XmlCreateScreanActivity.class));

@@ -80,7 +80,6 @@ public class JsonLog {
 //        for (String line : lines) {
 //            Log.e(tag, "║ " + line);
 //        }
-        LogUtils.toE(tag, message);
         StringBuilder builder = new StringBuilder();
         for (String line : lines) {
             builder.append(line);

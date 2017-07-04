@@ -89,6 +89,7 @@ public class StarPraiseActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        LogUtils.toJsonFormat("onClick","onClick:"+v.getId());
         switch (v.getId()) {
             case R.id.btn_add:
                 star_normal.addStar();

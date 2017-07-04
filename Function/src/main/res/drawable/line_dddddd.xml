@@ -4,6 +4,7 @@
     <!--android:divider="@drawable/line_dddddd"-->
     <!--android:showDividers="middle"-->
     <solid android:color="#dddddd"/>
-    <size android:height="1px"
+    <size
+        android:height="1px"
         android:width="1px"/>
 </shape>

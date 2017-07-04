@@ -42,6 +42,11 @@ public class SmollUtils {
     }
 
 
+    /**
+     * 获取版本号
+     * @param context
+     * @return
+     */
     public static String getVersionName(Context context) {
         String version = "";
         try {
@@ -70,6 +75,13 @@ public class SmollUtils {
                 );
 
         return activityManager.getLauncherLargeIconSize();
+    }
+
+    //动态设置drawableTop
+    public static void setDraw(){
+//        Drawable rightDrawable = getResources().getDrawable(R.drawable.icon_new);
+//        rightDrawable.setBounds(0, 0, rightDrawable.getMinimumWidth(), rightDrawable.getMinimumHeight());
+//        tvVersionStatus.setCompoundDrawables(null, null, rightDrawable, null);
     }
 
 }
