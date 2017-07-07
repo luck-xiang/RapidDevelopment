@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.kexiang.function.utils.LogUtils;
+import com.kexiang.function.view.own.CalendarAttenceView;
 import com.kxiang.function.R;
 
 import java.util.ArrayList;
@@ -226,7 +227,8 @@ public class DialogCalender extends DialogFragment implements View.OnClickListen
 
             int monthTemp = (month + position - 1) % 12 + 1;
             int dayTemp;
-            if (yearTemp == (calender.get(Calendar.YEAR)) && monthTemp == (calender.get(Calendar.MONTH) + 1)) {
+            if (yearTemp == (calender.get(Calendar.YEAR)) &&
+                    monthTemp == (calender.get(Calendar.MONTH) + 1)) {
                 dayTemp = calender.get(Calendar.DAY_OF_MONTH);
             }
             else {
@@ -234,9 +236,12 @@ public class DialogCalender extends DialogFragment implements View.OnClickListen
             }
 
 
-            CalendarSingleView view = new CalendarSingleView(getContext(), yearTemp, monthTemp,
-                    dayTemp, lunarCalendar);
-            view.setOnItemClickListener(calendarItemClickListener);
+//            CalendarSingleView view = new CalendarSingleView(getContext(), yearTemp, monthTemp,
+//                    dayTemp, lunarCalendar);
+//            view.setOnItemClickListener(calendarItemClickListener);
+            CalendarAttenceView view = new CalendarAttenceView(getContext(), yearTemp, monthTemp,
+                    dayTemp);
+//            view.setOnItemClickListener(calendarItemClickListener);
 
             container.addView(view);
             return view;

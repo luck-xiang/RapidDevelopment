@@ -304,6 +304,11 @@ public class LunarCalendarUtils {
             this.chick = chick;
         }
 
+        /**
+         * 该位置是否可以点击，每个页面前后不是当月部分的日期
+         *
+         * @return
+         */
         public boolean isChick() {
             return chick;
         }

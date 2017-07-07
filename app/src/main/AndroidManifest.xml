@@ -164,6 +164,8 @@
         </activity>
         <activity android:name=".function.activity.CycleViewActivity">
         </activity>
+        <activity android:name=".function.activity.BeautifulCalendarActivity">
+        </activity>
     </application>
 
 </manifest>

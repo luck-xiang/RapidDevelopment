@@ -250,10 +250,15 @@ public class LoopCycleLayout extends LinearLayout {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-//        if (animator != null)
-//            if (!animator.isRunning()) {
-//                animator.start();
-//            }
+        try {
+            if (animator != null)
+                if (!animator.isRunning()) {
+                    animator.start();
+                }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**

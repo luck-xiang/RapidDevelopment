@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@color/color_f03e1b"
+              android:background="@color/darkviolet"
               android:gravity="center_horizontal">
 
     <LinearLayout
@@ -32,6 +32,7 @@
         <ImageButton
             android:id="@+id/btn_last"
             android:src="@drawable/selector_back"
+            android:background="@null"
             android:layout_width="60dp"
             android:layout_height="match_parent"/>
 
@@ -50,12 +51,14 @@
         <ImageButton
             android:id="@+id/btn_next"
             android:src="@drawable/selector_next"
+            android:background="@null"
             android:layout_width="60dp"
             android:layout_height="match_parent"/>
     </LinearLayout>
 
 
     <android.support.v4.view.ViewPager
+        android:background="@color/color_ffffff"
         android:id="@+id/vp_calender"
         android:layout_margin="10dp"
         android:layout_width="300dp"

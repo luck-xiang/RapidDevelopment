@@ -27,6 +27,7 @@ import com.kexiang.function.view.recycleview.RecycleDividerItemLinear;
 import com.kxiang.quick.base.BaseActivity;
 import com.kxiang.quick.bean.ClassBean;
 import com.kxiang.quick.dbtest.DBTestActivity;
+import com.kxiang.quick.function.activity.BeautifulCalendarActivity;
 import com.kxiang.quick.function.activity.CalanderActivity;
 import com.kxiang.quick.function.activity.ComeBackMenuViewActivity;
 import com.kxiang.quick.function.activity.CycleViewActivity;
@@ -202,6 +203,7 @@ public class MainActivity extends BaseActivity {
 
 
 
+        classBeanList.add(getClassBean("漂亮的日历控件", BeautifulCalendarActivity.class));
         classBeanList.add(getClassBean("竖直滚动测试", CycleViewActivity.class));
         classBeanList.add(getClassBean("飘雪", SnowViewActivity.class));
         classBeanList.add(getClassBean("开源侧滑删除", MainCstActivity.class));
