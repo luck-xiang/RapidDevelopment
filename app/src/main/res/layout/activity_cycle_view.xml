@@ -12,7 +12,7 @@
 
         android:id="@+id/ll_cycle"
         android:layout_width="match_parent"
-        android:layout_height="300px"
+        android:layout_height="200dp"
         android:orientation="vertical">
 
 

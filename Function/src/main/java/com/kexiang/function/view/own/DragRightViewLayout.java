@@ -29,6 +29,7 @@ public class DragRightViewLayout extends ViewGroup
         initView(context);
 
 
+
     }
 
     public DragRightViewLayout(Context context, AttributeSet attrs) {

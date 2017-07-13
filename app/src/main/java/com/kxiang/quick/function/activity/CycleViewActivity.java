@@ -1,6 +1,7 @@
 package com.kxiang.quick.function.activity;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -20,6 +21,7 @@ public class CycleViewActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycle_view);
+
     }
 
     private LoopCycleLayout ll_cycle;
@@ -40,7 +42,7 @@ public class CycleViewActivity extends BaseActivity {
             @Override
             public LoopCycleLayout.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 return new ViewHodler(
-                        View.inflate(thisActivity, R.layout.item_cycle, null)
+                        LayoutInflater.from(thisActivity).inflate(R.layout.item_cycle, parent, false)
                 );
             }
 
@@ -97,6 +99,7 @@ public class CycleViewActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     LogUtils.toE("onBindViewHolder", "onClick:" + position);
+                    showToastShort("点击了："+position);
                 }
             }
 

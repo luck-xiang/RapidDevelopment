@@ -38,19 +38,31 @@ public class LoopCycleLayout extends LinearLayout {
     }
 
     private View view;
-
     private ValueAnimator animator;
     private Scroller scroller;
 
     private int moveSize = 0;
     private int moveTempX = 0;
-    private boolean down = true;
+
+    /**
+     * 手指按下时候停止动画滚动
+     */
     private boolean finger = false;
 
     private LoopCycleLayout.Adapter adapter;
 
+    /**
+     * 几个viewHolder
+     */
     private List<LoopCycleLayout.ViewHolder> viewHolderList;
-    private int cyclePosition = 0;
+    /**
+     * 像上滑动位置滑动位置
+     */
+    private int cyclePositionDown = 0;
+    /**
+     * 像上滑动位置滑动位置
+     */
+    private int cyclePositionSelect;
 
     protected void initView(Context context) {
         animator = new ValueAnimator();
@@ -75,21 +87,21 @@ public class LoopCycleLayout extends LinearLayout {
 
             @Override
             public void onAnimationRepeat(Animator animation) {
-
-                int pre = (cyclePosition) % viewHolderList.size();
-                int item = (cyclePosition + 2) % adapter.getItemCount();
-                adapter.onBindViewHolder(viewHolderList.get(pre), item);
-                view = getChildAt(0);
-                removeView(view);
-                addView(view);
-                cyclePosition++;
+                //手指按下的时候禁止动画滑动
+                if (!finger) {
+                    rollUp();
+                }
             }
         });
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                moveSize = (int) animation.getAnimatedValue() / 10;
-                scrollTo(0, moveSize);
+                //手指按下的时候禁止动画滑动
+                if (!finger) {
+                    moveSize = (int) animation.getAnimatedValue() / 10;
+                    scrollTo(0, moveSize);
+                }
+
             }
         });
         animator.setDuration(3000);
@@ -105,83 +117,127 @@ public class LoopCycleLayout extends LinearLayout {
     }
 
     private void addItemViewId(LoopCycleLayout.Adapter adapter) {
+        int topTemp=topItem - 1;
         for (int i = 0; i < adapter.getItemViewCount(); i++) {
             ViewHolder viewHolder = adapter.onCreateViewHolder(this, 0);
+
+            //设置第一个的值到topItem-1的位置
+            if (i < topTemp) {
+                adapter.onBindViewHolder(viewHolder, adapter.getItemCount() - topTemp+i);
+            }
+
+            //设置第topItem-1个到第adapter.getItemViewCount()值
+            if (i >= topTemp)
+                adapter.onBindViewHolder(viewHolder, (i - topTemp) % adapter.getItemCount());
+
+            //添加holder
             viewHolderList.add(viewHolder);
             addView(viewHolder.itemView);
-            if (i > 0)
-                adapter.onBindViewHolder(viewHolder, (i - 1) % adapter.getItemCount());
-
         }
+        cyclePositionSelect = adapter.getItemViewCount();
+
 
     }
 
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        switch (ev.getAction()) {
-//            case MotionEvent.ACTION_DOWN:
-//                finger = true;
-//                animator.cancel();
-//                scroller.abortAnimation();
-//                moveTempX = (int) ev.getY();
-//                break;
-//            case MotionEvent.ACTION_MOVE:
-//
-//                int tempY = moveTempX - (int) ev.getY();
-//                moveSize = moveSize + tempY;
-//                LogUtils.toE("ACTION_MOVE", "" + moveSize);
-//                moveTempX = (int) ev.getY();
-//                if (moveSize < 0) {
-//                    if (down) {
-//                        view = this.getChildAt(getChildCount() - 1);
-//                        this.removeView(view);
-//                        this.addView(view, 0);
-//                        down = false;
-//                    }
-//
-//                    if (moveSize < -getHeight()) {
-//                        moveSize = -getHeight();
-//                    }
-//
-//                    scrollTo(0, moveSize);
-//                    if (moveSize == -getHeight()) {
-//                        moveSize = 0;
-//                        down = true;
-//                    }
-//                }
-//                else {
-//                    if (moveSize > getHeight()) {
-//                        moveSize = getHeight();
-//                    }
-//                    this.scrollTo(0, moveSize);
-//                    if (moveSize == getHeight()) {
-//                        view = this.getChildAt(0);
-//                        this.removeView(view);
-//                        this.addView(view);
-//                        moveSize = 0;
-//                        this.scrollTo(0, moveSize);
-//                    }
-//
-//                }
-//
-//
-//                break;
-//            case MotionEvent.ACTION_UP:
-//                finger = false;
-//                startSize = moveSize;
-//                if (moveSize != 0) {
-//                    scroller.startScroll(0, 0, 0, moveSize,
-//                            (int) (3000f * Math.abs(moveSize) / getHeight()));
-//                }
-//                LogUtils.toE("computeScroll", "startScroll:" + moveSize);
-//                LogUtils.toE("computeScroll", "time:" + (int) (3000f * Math.abs(moveSize) / getHeight()));
-//                invalidate();
-////                animator.start();
-//                break;
-//
-//        }
-//        return super.dispatchTouchEvent(ev);
-//    }
+    public final static int MAX_MOVE = 10;
+    /**
+     * 滚动的距离，跟item有关
+     */
+    private int scollSize = 0;
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                finger = true;
+                animator.cancel();
+                scroller.abortAnimation();
+                moveTempX = (int) ev.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+
+                int tempY = moveTempX - (int) ev.getY();
+                moveSize = moveSize + tempY;
+                moveTempX = (int) ev.getY();
+                //向下上滚动
+                if (moveSize > this.getChildAt(getChildCount() - 1).getHeight() - MAX_MOVE) {
+                    this.scrollTo(0, moveSize);
+                    moveSize = MAX_MOVE;
+                    rollUp();
+                }
+
+                //向下滚动
+                if (moveSize < -this.getChildAt(getChildCount() - 1).getHeight() + MAX_MOVE) {
+                    this.scrollTo(0, moveSize);
+                    moveSize = -MAX_MOVE;
+                    rollDown();
+                }
+                this.scrollTo(0, moveSize);
+
+                LogUtils.toE("moveSize", "moveSize:" + moveSize);
+                break;
+            case MotionEvent.ACTION_UP:
+                finger = false;
+                startSize = moveSize;
+                if (moveSize != 0) {
+                    scroller.startScroll(0, 0, 0, moveSize,
+                            (int) (3000f * Math.abs(moveSize) / getHeight()));
+                }
+                invalidate();
+                break;
+
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+
+    /**
+     * 向下滚动
+     */
+    private void rollDown() {
+        view = getChildAt(getChildCount() - 1);
+        removeView(view);
+        addView(view, 0);
+        int pre = (cyclePositionSelect + adapter.getItemViewCount() - 1) % adapter.getItemViewCount();
+        int item = (cyclePositionDown + adapter.getItemCount() - topItem) % adapter.getItemCount();
+        LogUtils.toE("cyclerollDown", "pre:" + pre);
+        LogUtils.toE("cyclerollDown", "item:" + item);
+        LogUtils.toE("cyclerollDown", "cyclePositionDown:" + cyclePositionDown);
+        adapter.onBindViewHolder(viewHolderList.get(pre), item);
+
+        cyclePositionDown--;
+        if (cyclePositionDown < 0) {
+            cyclePositionDown = adapter.getItemCount() - 1;
+        }
+        cyclePositionSelect--;
+        if (cyclePositionSelect < 0) {
+            cyclePositionSelect = adapter.getItemViewCount() - 1;
+        }
+    }
+
+    /**
+     * 向上滚动
+     */
+    private void rollUp() {
+        view = getChildAt(0);
+        removeView(view);
+        addView(view);
+        //当前排列中最后一个item在保存中的位置
+        int pre = (cyclePositionSelect) % adapter.getItemViewCount();
+        //滑动中显示在界面最上面的位置
+        int item = (cyclePositionDown  + topItem) % adapter.getItemCount();
+        LogUtils.toE("cyclerollUp", "pre:" + pre);
+        LogUtils.toE("cyclerollUp", "item:" + item);
+        LogUtils.toE("cyclerollUp", "cyclePositionDown:" + cyclePositionDown);
+        adapter.onBindViewHolder(viewHolderList.get(pre), item);
+        cyclePositionDown++;
+        cyclePositionSelect++;
+        if (cyclePositionSelect > adapter.getItemViewCount()) {
+            cyclePositionSelect = 1;
+        }
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
@@ -190,33 +246,69 @@ public class LoopCycleLayout extends LinearLayout {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        LogUtils.toE("onSizeChanged", "onSizeChanged:");
+
         super.onSizeChanged(w, h, oldw, oldh);
-        animator.setIntValues(0, 0, 0, getHeight() * 10);
+        scollSize = getChildAt(1).getMeasuredHeight();
+        LogUtils.toE("onSizeChanged", "onSizeChanged:" + scollSize);
+        animator.setIntValues(0, 0, 0, scollSize * 10);
         if (getChildCount() >= 2)
             animator.start();
     }
 
+
+    /**
+     * 顶部排列个数
+     */
+    private int topItem = 3;
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-
+        super.onLayout(changed, left, top, right, bottom);
         LogUtils.toE("onLayout", "left:" + left);
         LogUtils.toE("onLayout", "top:" + top);
         LogUtils.toE("onLayout", "right:" + right);
         LogUtils.toE("onLayout", "bottom:" + bottom);
-
         int width = right - left;
         int height = bottom - top;
 
-//        if (getChildCount() != 3) {
-//            throw new IllegalStateException("控件只能为三个");
-//        }
-        super.onLayout(changed, left, top, right, bottom);
 
-        for (int i = 0; i < getChildCount(); i++) {
-            View view = getChildAt(i);
-//            view.layout(left,-2*height+i*height,right,-height+i*height);
-            view.layout(left, -height + i * height, right, i * height);
+        if (getChildCount() >= topItem) {
+            View viewFirt = getChildAt(0);
+            View viewSecnd = getChildAt(1);
+            View viewCenter = getChildAt(2);
+            //子view布局
+            int centerTop = (height - viewCenter.getHeight()) / 2;
+            int centerBottom = centerTop + viewCenter.getHeight();
+            int secndTop = centerTop - viewSecnd.getHeight();
+            int firstTop = secndTop - viewFirt.getHeight();
+
+
+            LogUtils.toE("onLayout", "firstTop:" + firstTop);
+            LogUtils.toE("onLayout", "firstTop:" + secndTop);
+            LogUtils.toE("onLayout", "centerTop:" + centerTop);
+            LogUtils.toE("onLayout", "centerBottom:" + centerBottom);
+
+            //布局第一
+            viewFirt.layout(left, firstTop, right, secndTop);
+            //布局第二个
+            viewSecnd.layout(left, secndTop, right, centerTop);
+            //中间显示
+            viewCenter.layout(left, centerTop, right, centerBottom);
+
+            //布局其它的
+            for (int i = topItem; i < getChildCount(); i++) {
+                View view = getChildAt(i);
+                view.layout(left, centerBottom + view.getHeight() * (i - topItem),
+                        right, centerBottom + view.getHeight() * (i - topItem + 1));
+            }
+
+
+        }
+        else {
+            for (int i = 0; i < getChildCount(); i++) {
+                View view = getChildAt(i);
+                view.layout(left, -height + i * height, right, i * height);
+            }
         }
 
 
@@ -227,7 +319,9 @@ public class LoopCycleLayout extends LinearLayout {
     @Override
     public void computeScroll() {
         super.computeScroll();
+        //手指按下时候，不执行自动滑动
         if (!finger) {
+            //scroller类停止滑动的时候开始动画，
             if (scroller.computeScrollOffset()) {
                 moveSize = startSize - scroller.getCurrY();
                 this.scrollTo(0, moveSize);
@@ -235,6 +329,7 @@ public class LoopCycleLayout extends LinearLayout {
                 invalidate();
             }
             else {
+                //如果动画没有运行或则子view大于2的时候开始动画
                 if (!animator.isRunning() && getChildCount() >= 2) {
                     animator.start();
                     LogUtils.toE("computeScroll", "computeScroll:" + animator.isRunning());
@@ -278,8 +373,13 @@ public class LoopCycleLayout extends LinearLayout {
 
         public abstract int getItemCount();
 
+        /**
+         * 隐藏和显示的view的总个数
+         *
+         * @return
+         */
         public int getItemViewCount() {
-            return 3;
+            return 5;
         }
 
         public abstract LoopCycleLayout.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);

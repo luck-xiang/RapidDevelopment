@@ -3,25 +3,26 @@
               android:id="@+id/ll_all"
               android:orientation="horizontal"
               android:layout_width="match_parent"
+              android:background="@color/color_27c4c4"
               android:gravity="center"
-              android:layout_height="40dp">
+              android:layout_height="100dp">
 
-    <TextView
-        android:text="这是一个textview"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <!--<TextView-->
+        <!--android:text="这是一个textview"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"/>-->
 
-    <ImageView
-        android:src="@drawable/banner01"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"/>
+    <!--<ImageView-->
+        <!--android:src="@drawable/banner01"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="wrap_content"/>-->
 
     <TextView
         android:id="@+id/tv_test"
         android:text="第一个"
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -2,7 +2,6 @@ package com.kxiang.quick.base;
 
 import com.kexiang.function.view.recycleview.BaseRecycleRefreshOrLoadingMoreAdapter;
 import com.kxiang.quick.R;
-import com.kxiang.quick.function.adapter.RefreshLoadingAdapter;
 import com.ybao.pullrefreshview.layout.BaseHeaderView;
 
 /**
@@ -73,7 +72,7 @@ public abstract class BaseRefreshLoadingFragment extends BaseRecycleViewFragment
 
     protected void setLoading(final BaseRecycleRefreshOrLoadingMoreAdapter adapter) {
 
-        adapter.setOnLoadingMoreListener(new RefreshLoadingAdapter.OnLoadingMoreListener() {
+        adapter.setOnLoadingMoreListener(new BaseRecycleRefreshOrLoadingMoreAdapter.OnLoadingMoreListener() {
             @Override
             public void onLoadingMore() {
 
