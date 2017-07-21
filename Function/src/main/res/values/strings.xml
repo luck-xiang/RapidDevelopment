@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Function</string>
     <string name="the_current_network">当前网络不可用，请检查网络设置并刷新</string>
+
 </resources>

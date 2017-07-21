@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--CircleImageView属性定义区-->
+    <declare-styleable name="LoopCycleLayout">
+        <attr name="scrool_loop" format="integer"/>
+    </declare-styleable>
+</resources>

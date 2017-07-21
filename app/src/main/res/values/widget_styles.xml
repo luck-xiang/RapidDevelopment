@@ -1,0 +1,10 @@
+<resources>
+
+
+    <style name="tablayout" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/x30</item>
+        <item name="android:textColor">@color/color_474747</item>
+    </style>
+
+
+</resources>

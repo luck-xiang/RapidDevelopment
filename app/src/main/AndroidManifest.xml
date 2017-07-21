@@ -25,6 +25,9 @@
     <uses-permission android:name="android.permission.READ_LOGS"/>
     <!-- 保存资源到SD卡 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 摄像头权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 自动聚焦权限 -->
 
     <!-- nfc使用权限 -->
     <uses-feature
@@ -166,6 +169,10 @@
         </activity>
         <activity android:name=".function.activity.BeautifulCalendarActivity">
         </activity>
+        <activity android:name=".function.activity.erwm.QrCodeActivity">
+        </activity>
+        <activity android:name="com.google.zxing.activity.CaptureActivity"
+                  android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
     </application>
 
 </manifest>

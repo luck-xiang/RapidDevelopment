@@ -71,8 +71,7 @@ public abstract class BaseRecycleRadioAdapter<T> extends BaseRecycleAdapter {
         public void onClick(View v) {
 //            Log.e("recyclerView", "" + recyclerView);
             if (position >= 0 && recyclerView != null) {
-                RadioViewHolder item = (RadioViewHolder) recyclerView.
-                        findViewHolderForLayoutPosition(selectPosition);
+                RadioViewHolder item = (RadioViewHolder) recyclerView.findViewHolderForLayoutPosition(selectPosition);
                 Log.e("item", "" + item);
                 if (item != null) {//还在屏幕里
                     item.radio_select.setSelected(false);

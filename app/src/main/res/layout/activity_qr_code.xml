@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:fitsSystemWindows="true"
+
+    android:orientation="vertical"
+    >
+    <include layout="@layout/fun_title_back_bar"/>
+
+    <Button
+        android:id="@+id/openQrCodeScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dencode_qrcode"
+        />
+
+    <TextView
+        android:id="@+id/qrCodeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="@string/qrcodetext"/>
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:hint="@string/code_text"/>
+
+    <Button
+        android:id="@+id/CreateQrCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/encode_qrcode"
+        />
+
+    <ImageView
+        android:id="@+id/QrCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:src="@mipmap/ic_launcher"/>
+</LinearLayout>

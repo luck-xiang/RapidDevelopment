@@ -23,7 +23,7 @@ import com.kexiang.function.utils.AppVersionUtils;
 import com.kexiang.function.utils.LogUtils;
 import com.kexiang.function.view.banner.BannersView;
 import com.kexiang.function.view.recycleview.OnRecycleItemClickListener;
-import com.kexiang.function.view.recycleview.RecycleDividerItemLinear;
+import com.kexiang.function.view.recycleview.RecycleDividerItemLinears;
 import com.kxiang.quick.base.BaseActivity;
 import com.kxiang.quick.bean.ClassBean;
 import com.kxiang.quick.dbtest.DBTestActivity;
@@ -49,6 +49,7 @@ import com.kxiang.quick.function.activity.SocketActivity;
 import com.kxiang.quick.function.activity.StarPraiseActivity;
 import com.kxiang.quick.function.activity.ViewDragHelperActivity;
 import com.kxiang.quick.function.activity.XmlCreateScreanActivity;
+import com.kxiang.quick.function.activity.erwm.QrCodeActivity;
 import com.kxiang.quick.function.activity.own.BaseViewActivity;
 import com.kxiang.quick.function.activity.own.OwnViewActivity;
 import com.kxiang.quick.function.activity.own.ScrollTestActivity;
@@ -178,12 +179,16 @@ public class MainActivity extends BaseActivity {
         allAdapter = new MainAdapter(this, classBeanList, rlv_all);
 
         rlv_all.setLayoutManager(new LinearLayoutManager(this));
+//        rlv_all.addItemDecoration(
+//                new RecycleDividerItemLinear(this,
+//                        LinearLayoutManager.VERTICAL,
+//                        getResources().getColor(R.color.refresh_dddddd)
+//                )
+//        );
         rlv_all.addItemDecoration(
-                new RecycleDividerItemLinear(this,
-                        LinearLayoutManager.VERTICAL,
-                        getResources().getColor(R.color.refresh_dddddd)
-                )
+                new RecycleDividerItemLinears()
         );
+
         allAdapter.setOnRecycleItemSelectListener(new OnRecycleItemClickListener() {
             @Override
             public void OnRecycleItemSelect(View view, int position) {
@@ -201,8 +206,7 @@ public class MainActivity extends BaseActivity {
 //        ScrollView
 
 
-
-
+        classBeanList.add(getClassBean("二维码扫描功能", QrCodeActivity.class));
         classBeanList.add(getClassBean("漂亮的日历控件", BeautifulCalendarActivity.class));
         classBeanList.add(getClassBean("竖直滚动测试", CycleViewActivity.class));
         classBeanList.add(getClassBean("飘雪", SnowViewActivity.class));

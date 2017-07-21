@@ -1,5 +1,8 @@
 <resources>
 
+
+
+
     <style name="xmlCreateScreanEdittet">
         <item name="android:background">@drawable/box_rect_f8a899_solid</item>
         <item name="android:layout_width">match_parent</item>
