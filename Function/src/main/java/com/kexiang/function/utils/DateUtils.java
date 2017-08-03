@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by Jimmy on 2016/10/14 0014.
+ * Created by kexiang on 2016/10/14 0014.
  */
 public class DateUtils {
 
@@ -53,6 +53,26 @@ public class DateUtils {
         date = calendar.getTime(); //这个时间就是日期往后推一天的结果
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
         String dateString = formatter.format(date);
+    }
+
+    /**
+     * 将日期转换为字符串数组
+     *
+     * @return
+     */
+    public String[] getDataForOne() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CANADA);
+        String[] time = format.format(new Date()).split(" ");
+        String[] timeYYMMDD = time[0].split("-");
+        String[] timeHHMMSS = time[1].split(":");
+        return new String[]{
+                timeYYMMDD[0],
+                timeYYMMDD[1],
+                timeYYMMDD[2],
+                timeHHMMSS[0],
+                timeHHMMSS[1],
+                timeHHMMSS[2],
+        };
     }
 
 }

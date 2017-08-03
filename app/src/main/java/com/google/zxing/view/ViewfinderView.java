@@ -43,7 +43,6 @@ import java.util.HashSet;
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder rectangle and partial
  * transparency outside it, as well as the laser scanner animation and result points.
- * �Զ����View������ʱ�м���ʾ��
  */
 public final class ViewfinderView extends View {
 
@@ -110,7 +109,8 @@ public final class ViewfinderView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        if (frame==null){
+        if (frame==null&&CameraManager.get()!=null){
+
             frame = CameraManager.get().getFramingRect();
         }
 

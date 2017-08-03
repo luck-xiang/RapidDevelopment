@@ -88,7 +88,7 @@ public abstract class BaseRecycleRefreshOrLoadingMoreAdapter<T> extends BaseRecy
         }
     }
 
-    private int LOADING = 101;
+    protected int LOADING = 101;
 
     @Override
     public int getItemViewType(int position) {

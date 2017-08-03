@@ -1,0 +1,21 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/color_fa4672"
+    >
+
+    <TextView
+        android:id="@+id/tv_item"
+        android:text="成员"
+        android:textColor="@color/color_474747"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/x26"
+        android:padding="@dimen/x20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

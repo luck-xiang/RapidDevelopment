@@ -32,6 +32,7 @@ import com.kxiang.quick.function.activity.CalanderActivity;
 import com.kxiang.quick.function.activity.ComeBackMenuViewActivity;
 import com.kxiang.quick.function.activity.CycleViewActivity;
 import com.kxiang.quick.function.activity.DownLoadActivity;
+import com.kxiang.quick.function.activity.ExpandableActivity;
 import com.kxiang.quick.function.activity.HandleActivity;
 import com.kxiang.quick.function.activity.KeyboardActivity;
 import com.kxiang.quick.function.activity.KeyboardCustomActivity;
@@ -93,10 +94,22 @@ public class MainActivity extends BaseActivity {
         TestTools();
         loadUpgradeInfo();
 
+//        DisplayMetrics displayMetrics=new DisplayMetrics();
+//        displayMetrics.scaledDensity=3;
+//        getResources().getDisplayMetrics().setTo(displayMetrics);
+
+
 
         LogUtils.toE("SnowViewActivity", "SnowViewActivity:" + Thread.currentThread().getName());
         LogUtils.toE("Pixels", "heightPixels:" + getResources().getDisplayMetrics().heightPixels);
         LogUtils.toE("Pixels", "widthPixels:" + getResources().getDisplayMetrics().widthPixels);
+        LogUtils.toE("Pixels", "density:" + getResources().getDisplayMetrics().density);
+        LogUtils.toE("Pixels", "scaledDensity:" + getResources().getDisplayMetrics().scaledDensity);
+        LogUtils.toE("Pixels", "xdpi:" + getResources().getDisplayMetrics().xdpi);
+        LogUtils.toE("Pixels", "ydpi:" + getResources().getDisplayMetrics().ydpi);
+
+
+
     }
 
     @Override
@@ -206,6 +219,7 @@ public class MainActivity extends BaseActivity {
 //        ScrollView
 
 
+        classBeanList.add(getClassBean("收缩框", ExpandableActivity.class));
         classBeanList.add(getClassBean("二维码扫描功能", QrCodeActivity.class));
         classBeanList.add(getClassBean("漂亮的日历控件", BeautifulCalendarActivity.class));
         classBeanList.add(getClassBean("竖直滚动测试", CycleViewActivity.class));

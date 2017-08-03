@@ -1,0 +1,30 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/fun_title_back_bar"/>
+
+
+
+    <com.ybao.pullrefreshview.layout.PullRefreshLayout
+        android:background="@color/refresh_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.ybao.pullrefreshview.simple.view.NormalHeaderView
+            android:id="@+id/pl_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rlv_all"
+            android:background="@color/color_ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.ybao.pullrefreshview.layout.PullRefreshLayout>
+</LinearLayout>

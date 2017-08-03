@@ -9,9 +9,7 @@
         <attr name="civ_fill_color" format="color"/>
     </declare-styleable>
 
-    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <!--CircleImageView属性定义区-->
 
     <!--BaseStarBar属性定义区-->

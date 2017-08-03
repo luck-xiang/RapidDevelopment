@@ -17,7 +17,7 @@ import java.util.List;
  * 创建时间:2016/11/3 17:02
  */
 
-public class DialogRadioAdapter extends BaseRecycleRadioAdapter<String>  {
+public class DialogRadioAdapter extends BaseRecycleRadioAdapter<String> {
 
 
     public DialogRadioAdapter(Context context, List<String> list, RecyclerView recyclerView, int selectDefault) {
@@ -32,15 +32,17 @@ public class DialogRadioAdapter extends BaseRecycleRadioAdapter<String>  {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         BaseViewHolder baseViewHolder = (BaseViewHolder) holder;
-        baseViewHolder.notyfyDataShow(position);
+        baseViewHolder.setData(list, position);
     }
 
 
     public class BaseViewHolder extends RadioViewHolder {
 
 
-        private void notyfyDataShow(int position) {
-            setPosition(position);
+
+
+        @Override
+        public void showData(String showData, int position) {
 
         }
 
@@ -54,7 +56,7 @@ public class DialogRadioAdapter extends BaseRecycleRadioAdapter<String>  {
 
         @Override
         public void onClick(View v) {
-            super.onClick(v);
+            setOnRadio(v);
         }
     }
 }

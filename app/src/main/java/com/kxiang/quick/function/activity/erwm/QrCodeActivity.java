@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.zxing.WriterException;
 import com.google.zxing.activity.CaptureActivity;
 import com.google.zxing.encoding.EncodingHandler;
+import com.kexiang.function.utils.CameraUtils;
 import com.kxiang.quick.R;
 import com.kxiang.quick.base.BaseActivity;
 
@@ -72,25 +73,17 @@ public class QrCodeActivity extends BaseActivity implements View.OnClickListener
                          */
                         requestPermissions(new String[]{Manifest.permission.CAMERA}, 2);
                     }
-                    else {
-                        Intent intent = new Intent(this, CaptureActivity.class);
-                        startActivityForResult(intent, REQUEST_CODE);
-                    }
 
-
-                }
-                else {
-                    Intent intent = new Intent(this, CaptureActivity.class);
-                    startActivityForResult(intent, REQUEST_CODE);
                 }
 
                 //打开二维码扫描界面
-//                if(CommonUtil.isCameraCanUse()){
-//                    Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
-//                    startActivityForResult(intent, REQUEST_CODE);
-//                }else{
-//                    Toast.makeText(this,"请打开此应用的摄像头权限！",Toast.LENGTH_SHORT).show();
-//                }
+                if (CameraUtils.isCameraCanUse()) {
+                    Intent intent = new Intent(thisActivity, CaptureActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+                }
+                else {
+                    Toast.makeText(this, "请打开此应用的摄像头权限！", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.CreateQrCode:
                 try {

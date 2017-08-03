@@ -133,7 +133,10 @@ public class DialogCheck extends DialogFragment implements View.OnClickListener 
         }
 
         rlv_select = (RecyclerView) getView().findViewById(R.id.rlv_select);
-        allAdapter = new DialogCheckAdapter<>(getContext(), data, selectLimit, selectLimitChange);
+//        allAdapter = new DialogCheckAdapter<>(getContext(), data, selectLimit, selectLimitChange);
+        allAdapter = new DialogCheckAdapter(getContext(), data);
+        allAdapter.setSelectMax(selectLimit);
+
         rlv_select.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rlv_select.setAdapter(allAdapter);
 

@@ -42,11 +42,11 @@ public abstract class BaseRecycleRadioAdapter<T> extends BaseRecycleAdapter {
         return selectPosition;
     }
 
-    public class RadioViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public abstract class RadioViewHolder extends BaseRecycleViewHolder<T> {
 
-
-        public void setPosition(int position) {
-            this.position = position;
+        @Override
+        public void setData(List<T> data, int position) {
+            super.setData(data, position);
             if (selectPosition == position) {
                 radio_select.setSelected(true);
             }
@@ -55,7 +55,7 @@ public abstract class BaseRecycleRadioAdapter<T> extends BaseRecycleAdapter {
             }
         }
 
-        protected int position;
+
         View radio_select;
 
         protected void setRaidoView(View view) {
@@ -67,8 +67,8 @@ public abstract class BaseRecycleRadioAdapter<T> extends BaseRecycleAdapter {
             super(itemView);
         }
 
-        @Override
-        public void onClick(View v) {
+
+        public void setOnRadio(View v) {
 //            Log.e("recyclerView", "" + recyclerView);
             if (position >= 0 && recyclerView != null) {
                 RadioViewHolder item = (RadioViewHolder) recyclerView.findViewHolderForLayoutPosition(selectPosition);

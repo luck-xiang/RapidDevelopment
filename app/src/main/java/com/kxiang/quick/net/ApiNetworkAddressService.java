@@ -3,6 +3,7 @@ package com.kxiang.quick.net;
 import com.kxiang.quick.news.bean.NewsInfo;
 
 import io.reactivex.Observable;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -26,6 +27,9 @@ import static com.kxiang.quick.net.BaseRetrofit.CACHE_CONTROL_NETWORK;
 public interface ApiNetworkAddressService {
 
 
+    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//    RequestBody body = RequestBody.create(JSON, "jsonString");
+
     /**
      * 获取新闻列表
      * eg: http://c.m.163.com/nc/article/headline/T1348647909107/60-20.html
@@ -44,14 +48,13 @@ public interface ApiNetworkAddressService {
             @Path("startPage") int startPage
     );
 
-     @Headers(CACHE_CONTROL_NETWORK)
+    @Headers(CACHE_CONTROL_NETWORK)
     @GET("nc/article/{type}/{id}/{startPage}-20.html")
     Call<ResponseBody> getNewsListTest(
             @Path("type") String type,
             @Path("id") String id,
             @Path("startPage") int startPage
     );
-
 
 
     /**

@@ -3,6 +3,8 @@ package com.kexiang.function.view.recycleview;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.List;
+
 /**
  * 项目名称:RapidDevelopment
  * 创建人:kexiang
@@ -15,10 +17,14 @@ public abstract class BaseRecycleViewHolder<T> extends RecyclerView.ViewHolder i
         super(itemView);
     }
 
-    private T data;
-    private int position;
+    protected T showData;
+    protected int position;
 
-    protected abstract void setData(T data, int position);
+    public void setData(List<T> data, int position) {
+        this.showData = data.get(position);
+        this.position = position;
+        showData(showData, position);
+    }
 
-
+    public abstract void showData(T showData, int position);
 }
